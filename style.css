@@ -2,7 +2,7 @@ body {
     background-image: url("./assets/newyorkbg.jpg");
     background-size: cover;
     background-position: center;
-    height: 800px;
+    height: auto;
     width: 100%;
     margin-bottom: 25px;
 }
@@ -20,7 +20,7 @@ body {
 }
 
 .maincard {
-    margin-top: 200px;
+    margin-top: 130px;
     opacity: 70%;
 }
 
