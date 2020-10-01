@@ -18,8 +18,8 @@ function music(x) {
     method: "GET",
     error: function (e) {
       alert("connection issues");
-
     }
+
   }).then(function (response) {
     console.log(response);
     for (var i = 0; i < response.tracks.length; i++) {
@@ -40,12 +40,14 @@ function music(x) {
         count++;
       }
     }
-    // console.log("soundcloud links: " + sc);
-    // console.log("Youtube Links 1: " + songLinks);
-    // console.log("count = " + count)
+
     // if there are youtube songs
     if (songLinks.length > 0) {
+      $("#youtube").attr("style", "display: inline-block;");
       youtube();
+    }else{
+      $("#youtube").attr("style", "display: none;");
+      $("#lyrics").attr("style", "display: none;");
     }
     // else - hide youtube card
 
@@ -53,9 +55,13 @@ function music(x) {
     // if there are soundcloud songs
     if (sc.length > 0) {
       $("#music").attr("style", "display: inline-block;");
+      $("#player").attr("style", "display: inline-block;");
       soundcloud();
     } else {
       $("#music").attr("style", "display: none;");
+      $("#player").attr("style", "display: none;");
+      $("#lyrics").attr("style", "display: none;");
+
       // hide soundcloud card
     }
 
@@ -79,23 +85,19 @@ function lyricsFinder(x, y) {
     }
   }).then(function (response) {
     console.log(response);
-    // console.log("Musixmatch response: ");
-    // console.log(response);
-    // console.log(response.message.body.track_list[0].track.track_id);
-    // console.log(response.message.body.track_list[0].track.has_lyrics);
     if (response.message.header.available === 0) {
       $("#lyrics").text("No Lyrics Available");
+      $("#lyrics").attr("style", "display: none");
+
 
     } else {
 
       var hasLyrics = response.message.body.track_list[0].track.has_lyrics;
       var trackId = response.message.body.track_list[0].track.track_id;
       if (hasLyrics === 1) {
+        $("#lyrics").attr("style", "display: inline-block");
         lyrics(trackId);
-      } else {
-        // hide card if there are no lyrics
-        $("#lyrics").text("No Lyrics Available");
-      }
+      } 
 
     }
   });
@@ -183,16 +185,18 @@ function soundcloud() {
   // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
 
+// plays song on click
 $("#player").on("click", "p", function () {
   var scLink = this.id;
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
-
 });
 
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
+  $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
+  scNames.length = 0;
   sc.length = 0;
   newArray.length = 0;
   finalArray.length = 0;
@@ -202,13 +206,14 @@ $("#musicInput").on("keydown", function (event) {
 
   if (event.keyCode == 13) {
     var genre = $("#musicInput").val();
+    // auto scroll to main content on enter
     $([document.documentElement, document.body]).animate({
       scrollTop: $("#stop").offset().top
     }, 2000);
     console.log(genre);
     music(genre);
-
   }
+
 });
 
 
