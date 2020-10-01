@@ -8,6 +8,12 @@ body {
     font-family: 'Thasadith', sans-serif;
 }
 
+#brandName {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 300px;
+}
+
 #musicInput {
     margin-right: 520px;
     width: 400px;
@@ -22,7 +28,11 @@ body {
 
 .maincard {
     margin-top: 130px;
-    opacity: 70%;
+    opacity: 85%
+}
+
+#musicbox {
+    padding-top: 500px;
 }
 
 #aboutUsCon {
