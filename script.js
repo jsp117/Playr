@@ -44,15 +44,28 @@ function music(x) {
         // console.log("Youtube Links 1: " + songLinks);
         // console.log("count = " + count)
         // if there are youtube songs
+        // if there are youtube songs
         if (songLinks.length > 0) {
+            $("#youtube").attr("style", "display: inline-block;");
             youtube();
+        } else {
+            $("#youtube").attr("style", "display: none;");
+            $("#lyrics").attr("style", "display: none;");
         }
+        // else - hide youtube card
+
+
         // if there are soundcloud songs
         if (sc.length > 0) {
             $("#music").attr("style", "display: inline-block;");
+            $("#player").attr("style", "display: inline-block;");
             soundcloud();
         } else {
             $("#music").attr("style", "display: none;");
+            $("#player").attr("style", "display: none;");
+            $("#lyrics").attr("style", "display: none;");
+
+            // hide soundcloud card
         }
 
     });
@@ -80,7 +93,7 @@ function lyricsFinder(x, y) {
         // console.log(response.message.body.track_list[0].track.track_id);
         // console.log(response.message.body.track_list[0].track.has_lyrics);
         if (response.message.header.available === 0) {
-            $("#lyrics").text("No Lyrics Available");
+            $("#lyrics").attr("style", "display: none");
 
         } else {
 
@@ -88,8 +101,6 @@ function lyricsFinder(x, y) {
             var trackId = response.message.body.track_list[0].track.track_id;
             if (hasLyrics === 1) {
                 lyrics(trackId);
-            } else {
-                $("#lyrics").text("No Lyrics Available");
             }
 
         }
@@ -185,10 +196,11 @@ $("#player").on("click", "p", function() {
 });
 
 $("#musicInput").on("keydown", function(event) {
+    // reset all arrays - empty elements
     $("#lyrics").empty();
     $("#player").empty();
     $("#youtube").empty();
-    // reset all arrays
+    scNames.length = 0;
     sc.length = 0;
     newArray.length = 0;
     finalArray.length = 0;

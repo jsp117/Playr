@@ -61,6 +61,7 @@ body {
     background-color: #b3b3b3;
     margin-right: 30px;
     margin-top: 20px;
+    margin-left: 30px;
 }
 
 .infoBox {
@@ -71,6 +72,7 @@ body {
     background-color: #b3b3b3;
     margin-right: 30px;
     margin-bottom: 20px;
+    margin-left: 30px;
 }
 
 #ytGrid {
