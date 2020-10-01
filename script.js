@@ -84,9 +84,16 @@ function soundcloud(){
 // trying to split everything before https from sc strings in array
 console.log("Soundcloud before: " + sc);
 $("#player").text(sc);
-scString = sc.toString();
-alter = scString.map(a => a.split("https"));
-console.log("altered sc links: " + alter);
+var newArray = sc.map(function(i){
+  return i[0].split("https").pop();
+});
+var finalArray = newArray.map(x => x.slice(0, -7));
+console.log("NEW = " + newArray);
+console.log("final = " + finalArray);
+$("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0]);
+console.log("https://w.soundcloud.com/player/?url=https" + finalArray[0]);
+// alter = sc.map(v => v.split("https" , 1));
+console.log("altered sc links: " + sc);
 // soundcloud embedded player link
 // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
