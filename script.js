@@ -26,7 +26,6 @@ function music(x){
       songLinks.push(response.tracks[i].eId);
       songNames.push(response.tracks[i].name);
     }
-    // check if there are more than 20 soundcloud links - if not - create youtube playlist out of youtube ids 
     // splits soundcloud and youtube links/artists
     for(var i = 0; i<songLinks.length; i++){
       var verify = songLinks[i];
@@ -100,7 +99,6 @@ $("#musicInput").on("keydown", function (event) {
     var genre = $("#musicInput").val();
     console.log(genre);
     music(genre);
-
   }
 });
 
