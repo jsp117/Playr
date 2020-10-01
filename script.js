@@ -149,27 +149,21 @@ function youtube() {
 }
 
 function soundcloud() {
-  // trying to split everything before https from sc strings in array
-  // console.log("Soundcloud before: " + sc);
-  // $("#player").text(sc);
   // returns second piece of split string
   newArray = sc.map(function (i) {
     return i[0].split("https").pop();
   });
+
   // takes "stream" off end of each string in array
   finalArray = newArray.map(x => x.slice(0, -7));
-  // console.log("NEW = " + newArray);
-  // console.log("final = " + finalArray);
   // adds working soundcloud link to soundcloud player
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0]);
-  // console.log("https://w.soundcloud.com/player/?url=https" + finalArray[0]);
-  // console.log("altered sc links: " + sc);
-  // grab soundcloud song names and artist name
-  console.log("SC NAMES: " + scNames);
+
+  // grab soundcloud artist name
   bandNames = scNames.map(function (n) {
     return n[0].split(" - ");
-
   });
+  // grabs song names 
   songNames = scNames.map(function (n) {
     return n[0].split(" - ").pop();
   });
@@ -179,6 +173,7 @@ function soundcloud() {
   // display soundcloud song names on id player
   for (var i = 0; i < scNames.length; i++) {
     var li = $("<p>");
+    li.attr("id", i);
     li.text((i + 1) + ": " + scNames[i]);
     $("#player").append(li);
   }
@@ -188,8 +183,9 @@ function soundcloud() {
   // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
 
-$("#player").on("click", "p", function(){
-
+$("#player").on("click", "p", function () {
+  var scLink = this.id;
+  $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 
 });
 
