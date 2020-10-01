@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PLAYR</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Tailwind -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+    <!--Tailwind Custom Forms - use to standardise form fields - https://github.com/tailwindcss/custom-forms-->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Philosopher&family=Pontano+Sans&family=Thasadith:ital,wght@0,400;0,700;1,400&family=Yeseva+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body class="leading-normal tracking-widest">
+
+    <nav class="bg-gray-600 opacity-75">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-16">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
+          <!-- Icon when menu is closed. -->
+          <!--
+          Heroicon name: menu
+
+          Menu open: "hidden", Menu closed: "block"
+        -->
+          <svg class="block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <!-- Icon when menu is open. -->
+          <!--
+          Heroicon name: x
+
+          Menu open: "block", Menu closed: "hidden"
+        -->
+          <svg
+            class="hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+                </div>
+                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex-shrink-0">
+                        <!-- Replace this with out logo -->
+                        <!-- <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo" />
+                    <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo" /> -->
+                    </div>
+                    <div class="hidden sm:block sm:ml-6">
+                        <div class="flex">
+                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+                            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a
+            >
+          </div>
+        </div>
+      </div>
+      <!--
+Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
+Read the documentation to get started: https://tailwindui.com/documentation
+-->
+<div>
+<div class="flex items-center mt-1 relative rounded-md shadow-sm h-24">
+  <div class="absolute inset-y-0 flex text-center items-center pointer-events-none">
+  <!-- </div>
+  <input id="musicInput" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="Search Music" type="search">
+</div> -->
+</div>
+
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
+          <!-- Heroicon name: bell -->
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+            />
+          </svg>
+        </button>
+
+        <!-- Profile dropdown -->
+        <div class="ml-3 relative">
+          <div>
+            <button
+              class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+              id="user-menu"
+              aria-label="User menu"
+              aria-haspopup="true"
+            >
+              <img
+                class="h-8 w-8 rounded-full"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+              />
+            </button>
+          </div>
+          <!--
+          Profile dropdown panel, show/hide based on dropdown state.
+
+          Entering: "transition ease-out duration-100"
+            From: "transform opacity-0 scale-95"
+            To: "transform opacity-100 scale-100"
+          Leaving: "transition ease-in duration-75"
+            From: "transform opacity-100 scale-100"
+            To: "transform opacity-0 scale-95"
+        -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- New Container -->
+<div class="bg-gray-50">
+    <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <h2 class="text-3xl leading-9 font-extrabold text-indigo-800 sm:text-4xl sm:leading-10 tracking-widest"id="playrBrand">
+       PLAYR
+        <br>
+        <span class="text-indigo-300">We bring music to the modern Generation</span>
+      </h2>
+      <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+        <div class="inline-flex rounded-md shadow">
+          <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+           Listen to Music
+          </a>
+                        </div>
+                        <div class="ml-3 inline-flex rounded-md shadow">
+                            <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+            Visit creators Profiles
+          </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container mx-auto">
+                <!-- About Us Container -->
+                <!-- Main Card -->
+                <div class="container mx-auto infoBox">
+
+                    <!--
+  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
+  Read the documentation to get started: https://tailwindui.com/documentation
+-->
+                    <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 opacity-65" id="aboutUsCon" data-aos="fade-up">
+                        <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                            <h3 class="text-lg leading-6 font-medium text-black-900 font-extrabold">
+                                Our Story
+                            </h3>
+                        </div>
+                        <div>
+                            <div class="grid grid-rows-3 grid-flow-col gap-4">
+                                <!-- Music History Playlist -->
+                                <div class="row-span-3 vision w-full">
+                                    <img src="assets/music.jpg" alt="music photo" id="musicImg">
+                                </div>
+                                <div class="row-span-1 col-span-1 font-semibold p-8 w-6/12" id="musicQuote">
+                                    <h3>"Music speaks when we can't, changes the way we feel, zones out all the noise, taking us into another world so surreal."</h3>
+                                </div>
+                                <div class="row-span-2 col-span-1 musicPlaylist">
+                                    <h2><img src="assets/play.png" alt="play icon" id="playIcon" /></h2>
+                                    <strong><h3 class="caption">Press Play</h3></strong>
+                                    <p class="textDescription">Drown yourself into the playlists we create for you and we'll set the mood.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- jQuery -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                <script>
+                    AOS.init();
+                </script>
+                <script src="script.js"></script>
+
+</body>
+
+</html>
