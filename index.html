@@ -206,8 +206,10 @@ Menu open: "block", Menu closed: "hidden"
   Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
   Read the documentation to get started: https://tailwindui.com/documentation
 -->
-        <div class="row" style="height: 1100px"></div>
+        <div class="row" style="height: 1000px" id="brandName">PLAYR</div>
         <div id="stop"></div>
+        <!-- test to get autoscroll working -->
+        <div id="space" style="height: 500px"></div>
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 maincard" data-aos="flip-up" data-aos-duration="3000">
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-black-900">
@@ -219,19 +221,20 @@ Menu open: "block", Menu closed: "hidden"
                 <div class="grid grid-rows-3 grid-flow-col gap-4 playlistBox">
                     <!-- Music History Playlist -->
                     <div id="lyrics" class="row-span-3 searchHistory">
-                        check
+
                     </div>
                     <div id="player" class="row-span-1 col-span-2 musicPlayer">
-                        checkcheck
+
                     </div>
                     <div id="youtube" class="row-span-2 col-span-2 musicPlaylist">
                     </div>
+                    <button id="top">Back to Top</button>
                 </div>
             </div>
         </div>
 
         <!-- Card displays YT Playlist -->
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-20 opacity-75 float-left mb-40" data-aos="fade-right" data-aos-duration="3000">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-20 opacity-75 float-left mb-40" data-aos="fade-right" data-aos-duration="3000" id="musicBox">
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-black-900">
                     PLAYR

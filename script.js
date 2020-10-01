@@ -191,8 +191,15 @@ $("#player").on("click", "p", function () {
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 });
 
+$("#top").on("click", function(){
+  $('html, body').animate({
+    scrollTop: '0px'}, 2000);
+
+});
+
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
+  $("body").attr("style", "overflow: visible;");
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
