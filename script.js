@@ -47,12 +47,16 @@ function music(x) {
     if (songLinks.length > 0) {
       youtube();
     }
+    // else - hide youtube card
+
+
     // if there are soundcloud songs
     if (sc.length > 0) {
       $("#music").attr("style", "display: inline-block;");
       soundcloud();
     } else {
       $("#music").attr("style", "display: none;");
+      // hide soundcloud card
     }
 
   });
@@ -89,6 +93,7 @@ function lyricsFinder(x, y) {
       if (hasLyrics === 1) {
         lyrics(trackId);
       } else {
+        // hide card if there are no lyrics
         $("#lyrics").text("No Lyrics Available");
       }
 
@@ -132,11 +137,11 @@ function youtube() {
   for (var i = 0; i < youtubeLinks.length; i++) {
     var li = $("<a>");
     var br = $("<br>");
-    li.attr("href", youtubeLinks[i]);
-    li.text(songNames[i]);
+    li.attr("href", youtubeLinks[i]).attr("target", "_blank");
+    li.text((i + 1) + ": " + songNames[i]);
     $("#youtube").append(li);
     $("#youtube").append(br);
-}
+  }
   // console.log(youtubeLinks);
   // push stills of youtube videos to div on page - with working link to youtube
   // $("#youtube").text(youtubeLinks);
@@ -146,7 +151,7 @@ function youtube() {
 function soundcloud() {
   // trying to split everything before https from sc strings in array
   // console.log("Soundcloud before: " + sc);
-  $("#player").text(sc);
+  // $("#player").text(sc);
   // returns second piece of split string
   newArray = sc.map(function (i) {
     return i[0].split("https").pop();
@@ -171,17 +176,26 @@ function soundcloud() {
   console.log("bandNames = " + bandNames);
   console.log("songNames = " + songNames);
 
-
-
-
+  // display soundcloud song names on id player
+  for (var i = 0; i < scNames.length; i++) {
+    var li = $("<p>");
+    li.text((i + 1) + ": " + scNames[i]);
+    $("#player").append(li);
+  }
 
   lyricsFinder(songNames[0], bandNames[0]);
   // soundcloud working embedded player link
   // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
 
+$("#player").on("click", "p", function(){
+
+
+});
+
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
+  $("#player").empty();
   $("#youtube").empty();
   sc.length = 0;
   newArray.length = 0;
