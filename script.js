@@ -129,9 +129,17 @@ function youtube() {
   for (var i = 0; i < 16; i++) {
     youtubeLinks.push("http://www.youtube.com/watch?v=" + remove4[i]);
   }
+  for (var i = 0; i < youtubeLinks.length; i++) {
+    var li = $("<a>");
+    var br = $("<br>");
+    li.attr("href", youtubeLinks[i]);
+    li.text(songNames[i]);
+    $("#youtube").append(li);
+    $("#youtube").append(br);
+}
   // console.log(youtubeLinks);
   // push stills of youtube videos to div on page - with working link to youtube
-  $("#youtube").text(youtubeLinks);
+  // $("#youtube").text(youtubeLinks);
   // $("#player").text(sc);
 }
 
@@ -174,6 +182,7 @@ function soundcloud() {
 
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
+  $("#youtube").empty();
   sc.length = 0;
   newArray.length = 0;
   finalArray.length = 0;
@@ -183,8 +192,12 @@ $("#musicInput").on("keydown", function (event) {
 
   if (event.keyCode == 13) {
     var genre = $("#musicInput").val();
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $("#stop").offset().top
+    }, 2000);
     console.log(genre);
     music(genre);
+
   }
 });
 
