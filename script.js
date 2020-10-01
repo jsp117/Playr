@@ -8,6 +8,8 @@ var count = 0;
 var sc = [];
 var scArtists = [];
 var alter = [];
+var newArray = [];
+var finalArray = [];
 
 
   // https://openwhyd.org/u/4d94501d1f78ac091dbc9b4d/playlist/10?format=links&limit=10000 - working to post 10000 links from adrians profile
@@ -84,21 +86,27 @@ function soundcloud(){
 // trying to split everything before https from sc strings in array
 console.log("Soundcloud before: " + sc);
 $("#player").text(sc);
-var newArray = sc.map(function(i){
+// returns second piece of split string
+newArray = sc.map(function(i){
   return i[0].split("https").pop();
 });
-var finalArray = newArray.map(x => x.slice(0, -7));
+// takes "stream" off end of each string in array
+finalArray = newArray.map(x => x.slice(0, -7));
 console.log("NEW = " + newArray);
 console.log("final = " + finalArray);
+// adds working soundcloud link to souncloud player
 $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0]);
 console.log("https://w.soundcloud.com/player/?url=https" + finalArray[0]);
-// alter = sc.map(v => v.split("https" , 1));
 console.log("altered sc links: " + sc);
-// soundcloud embedded player link
+// soundcloud working embedded player link
 // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
 
 $("#musicInput").on("keydown", function (event) {
+  // reset all arrays
+  newArray.length = 0;
+  finalArray.length = 0;
+  remove4.length = 0;
   songLinks.length = 0;
   songNames.length = 0;
 
