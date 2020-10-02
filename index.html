@@ -27,22 +27,14 @@
 
 <body class="font-sans leading-normal tracking-normal">
     <!-- Starting Container -->
-    <!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
+
     <nav class="bg-gray-600 opacity-75">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     <!-- Mobile menu button-->
                     <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
-              <!-- Icon when menu is closed. -->
-              <!--
-              Heroicon name: menu
-  
-              Menu open: "hidden", Menu closed: "block"
-            -->
+            
               <svg class="block h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -54,12 +46,7 @@
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-              <!-- Icon when menu is open. -->
-              <!--
-              Heroicon name: x
-  
-              Menu open: "block", Menu closed: "hidden"
-            -->
+            
               <svg
                 class="hidden h-6 w-6"
                 fill="none"
@@ -83,41 +70,26 @@
                     </div>
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex">
-                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a
+                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a
                 >
                 <a
-                  href="#"
+                  href="aboutUs.html"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
                   >About Us</a
                 >
                 <a
-                  href="#"
+                  href="profiles.html"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
                   >Link to Our Profiles</a>
                         </div>
                     </div>
                 </div>
-                <!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
+
                 <div>
                     <div class="flex items-center mt-1 relative rounded-md shadow-sm h-24">
                         <div class="absolute inset-y-0 flex text-center items-center pointer-events-none">
                         </div>
                         <input id="musicInput" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="Search Music" type="search">
-                        <!-- <div class="absolute inset-y-0 flex items-center"> -->
-                        <!-- Add Button Here -->
-                        <!-- <div class="mt-0">
-        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" id="searchBtn"> -->
-                        <!-- <span class="absolute inset-y-0 flex items-center pl-3">
-            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-            </svg>
-          </span> -->
-                        <!-- Search
-        </button>
-      </div> -->
                         <!-- </div> -->
                     </div>
                 </div>
@@ -147,16 +119,7 @@
           <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="">
         </button>
                         </div>
-                        <!--
-        Profile dropdown panel, show/hide based on dropdown state.
 
-        Entering: "transition ease-out duration-100"
-          From: "transform opacity-0 scale-95"
-          To: "transform opacity-100 scale-100"
-        Leaving: "transition ease-in duration-75"
-          From: "transform opacity-100 scale-100"
-          To: "transform opacity-0 scale-95"
-      -->
                         <div v-if="isOpen" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
                             <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                                 <ul class="musicDropdown">
@@ -177,11 +140,7 @@
             </div>
         </div>
 
-        <!--
-Mobile menu, toggle classes based on menu state.
 
-Menu open: "block", Menu closed: "hidden"
--->
         <div class="hidden sm:hidden">
             <div class="px-2 pt-2 pb-3">
                 <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
@@ -195,11 +154,6 @@ Menu open: "block", Menu closed: "hidden"
 
     <!-- Main Card -->
     <div class="container mx-auto">
-
-        <!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
         <div class="row" style="height: 1000px" id="brandName">PLAYR</div>
         <div id="stop"></div>
         <!-- test to get autoscroll working -->
@@ -207,8 +161,10 @@ Menu open: "block", Menu closed: "hidden"
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 maincard relative" data-aos="flip-up" data-aos-duration="3000">
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-black-900">
-                    <iframe class="static" id="youtubePly" width="40%" height="80%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <iframe class="static" id="music" width="40%" height="80%" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>
+                    <div class="flex mb-4">
+                        <iframe class="static" id="youtubePly" width="45%" style="height:320px" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="static ml-18" id="music" width="55%" style="height:fit-content" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>
+                    </div>
                 </h3>
             </div>
             <div>
@@ -271,13 +227,6 @@ Menu open: "block", Menu closed: "hidden"
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             AOS.init();
-            // export default {
-            //     data() {
-            //         return {
-            //             isOpen: false
-            //         }
-            //     }
-            // }
         </script>
         <script src="script.js"></script>
 </body>
