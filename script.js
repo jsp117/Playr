@@ -65,7 +65,7 @@ function music(x) {
       songLinks.push(sl1[i]);
       songNames.push(sn1[i]);
     }
-
+    console.log("original youtube link: " + songLinks);
     // randomize soundcloud songs/names
     for (var i = 0; i < sc1.length; i++) {
       var x = Math.floor(Math.random() * sc1.length);
@@ -113,6 +113,7 @@ function music(x) {
     }
 
   });
+  // end music function
 }
 
 // checks if the song has available lyrics and for song id on musixmatch
@@ -151,6 +152,7 @@ function lyricsFinder(x, y) {
       }
     }
   });
+  // end lyrics finder
 }
 
 // grabs song lyrics
@@ -175,7 +177,7 @@ function lyrics(x) {
     lyricEle.attr("style", "margin-left: 60px; margin-top: 60px;");
     $("#lyrics").append(lyricEle);
   });
-
+// end lyrics
 }
 
 function youtube() {
@@ -203,7 +205,8 @@ function youtube() {
     aTag.attr("href", youtubeLinks[i]).attr("target", "_blank");
     // $("#youtube").append(br);
   }
-  // push stills of youtube videos to div on page - with working link to youtube
+  // push stills of youtube videos to div on page - with working link to youtube - todo
+  // end youtube
 }
 
 function soundcloud() {
@@ -232,7 +235,6 @@ function soundcloud() {
       finalArray.push(newArray[i]);
     }
   }
-
   // removes 7 characters regardless of stream existing at the end
   // finalArray = newArray.map(function (n){
   //   return n[0].split("/stream");
@@ -242,6 +244,7 @@ function soundcloud() {
   // adds working soundcloud link to soundcloud player
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0]);
 
+  console.log("ogbandNames");
   // grab soundcloud artist name
   bandNames = scNames.map(function (n) {
     if (n[0].includes(" - ")) {
@@ -368,7 +371,6 @@ $("#musicInput").on("keydown", function (event) {
   if (event.keyCode == 13) {
     var genre = $("#musicInput").val();
     // auto scroll to main content on enter
-    var div = $(".maincard");
     $([document.documentElement, document.body]).animate({
       scrollTop: $(".maincard").offset().top - 425
     }, 2000);
@@ -378,7 +380,6 @@ $("#musicInput").on("keydown", function (event) {
     youtubePlay(genre);
   }
 });
-
 
 function youtubePlay(y) {
   var frameId = $("#youtubePly");
@@ -415,9 +416,8 @@ function youtubePlay(y) {
   } else if (y.toLowerCase() === "electronic") {
     frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A");
   } else {
-    alert("we dont have that shhhiii");
+    alert("No youtube playlist available for this genre");
   }
-
 }
 
 $("#upButton").on("click", function () {
@@ -428,7 +428,7 @@ $("#upButton").on("click", function () {
       }, 1000);
     });
   });
-})
+});
 
 $('#downButton').click(function() {
   $('html, body').animate({
@@ -438,15 +438,12 @@ $('#downButton').click(function() {
 });
 
 
-// youtube playlist for genre
-// function youtubePlaylist(){
-// $("#youtubePlayer").attr("src", "https://www.youtube.com/embed/_3Jy1wc8pOg");
+function pageOpen(){
+  $("HTML, BODY").animate({
+    scrollTop: 0
+  }, 1000);
+}
 
-//   // https://www.youtube.com/embed/_3Jy1wc8pOg
-
-// }
-
-// youtubePlaylist();
-
+pageOpen();
 
 

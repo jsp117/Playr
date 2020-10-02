@@ -76,9 +76,14 @@ body {
     margin-left: 30px;
 }
 
-#ytGrid {
+#ytGrid,
+#scGrid {
     height: 500px;
     width: 630px;
+}
+
+.albumCover {
+    opacity: 80%;
 }
 
 #playIcon {
