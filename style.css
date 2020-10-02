@@ -111,6 +111,13 @@ body {
     margin-right: 30px;
 }
 
+.borderList {
+    margin-top: 5px;
+    border-bottom: 3px solid #e6e6e6;
+    margin-left: 10px;
+    display: block;
+}
+
 #musicImg {
     width: 500px;
     height: 600px;

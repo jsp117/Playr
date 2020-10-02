@@ -189,6 +189,7 @@ function youtube() {
         $("#youtube").append(div);
         // wraps div tag with 'a' tag
         $("#" + i + "div").wrap("<a class = 'new'></a>");
+        div.addClass("borderList");
         aTag.attr("href", youtubeLinks[i]).attr("target", "_blank");
         // $("#youtube").append(br);
     }
@@ -230,6 +231,7 @@ function soundcloud() {
     // display soundcloud song names on id player
     for (var i = 0; i < scNames.length; i++) {
         var li = $("<p>");
+        li.addClass("borderList");
         li.attr("id", i);
         li.text((i + 1) + ": " + scNames[i]);
         $("#player").append(li);
