@@ -182,14 +182,14 @@ function youtube() {
     // console.log(youtubeLinks);
     // push stills of youtube videos to div on page - with working link to youtube
     for (var i = 0; i < youtubeLinks.length; i++) {
-        var li = $("<a>");
+        var aTag = $("<a>");
         var div = $("<div>").attr("id", i + "div");
-        li.text((i + 1) + ": " + songNames[i]);
-        $("#youtube").append(li);
+        aTag.text((i + 1) + ": " + songNames[i]);
+        $("#youtube").append(aTag);
         $("#youtube").append(div);
         // wraps div tag with 'a' tag
         $("#" + i + "div").wrap("<a class = 'new'></a>");
-        li.attr("href", youtubeLinks[i]).attr("target", "_blank");
+        aTag.attr("href", youtubeLinks[i]).attr("target", "_blank");
         // $("#youtube").append(br);
     }
     // $("#youtube").text(youtubeLinks);
@@ -350,6 +350,16 @@ function youtubePlay(y) {
     }
 
 }
+
+$("#upButton").on("click", function() {
+    $(function() {
+        $("#upButton").on('click', function() {
+            $("HTML, BODY").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+    });
+})
 
 // youtube playlist for genre
 // function youtubePlaylist(){
