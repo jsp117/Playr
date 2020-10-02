@@ -76,9 +76,16 @@ function music(x) {
             sc1Names[x] = a;
         }
 
-        for (var i = 0; i < 15; i++) {
-            sc.push(sc1[i]);
-            scNames.push(sc1Names[i]);
+        if (sc1.length < 15) {
+            for (var i = 0; i < sc1.length; i++) {
+                sc.push(sc1[i]);
+                scNames.push(sc1Names[i]);
+            }
+        } else {
+            for (var i = 0; i < 15; i++) {
+                sc.push(sc1[i]);
+                scNames.push(sc1Names[i]);
+            }
         }
 
         // if there are youtube songs
@@ -176,11 +183,14 @@ function youtube() {
     // push stills of youtube videos to div on page - with working link to youtube
     for (var i = 0; i < youtubeLinks.length; i++) {
         var li = $("<a>");
-        var br = $("<br>");
-        li.attr("href", youtubeLinks[i]).attr("target", "_blank");
+        var div = $("<div>").attr("id", i + "div");
         li.text((i + 1) + ": " + songNames[i]);
         $("#youtube").append(li);
-        $("#youtube").append(br);
+        $("#youtube").append(div);
+        // wraps div tag with 'a' tag
+        $("#" + i + "div").wrap("<a class = 'new'></a>");
+        li.attr("href", youtubeLinks[i]).attr("target", "_blank");
+        // $("#youtube").append(br);
     }
     // $("#youtube").text(youtubeLinks);
     // $("#player").text(sc);
@@ -330,11 +340,11 @@ function youtubePlay(y) {
     } else if (y.toLowerCase() === "latin") {
         frameId.attr("src", "https://www.youtube.com/embed/XaWLdx_ake8")
     } else if (y.toLowerCase() === "world") {
-        frameId.attr("src", "")
+        frameId.attr("src", "https://www.youtube.com/embed/NgN12_xNHb0")
     } else if (y.toLowerCase() === "hip hop") {
-        frameId.attr("src", "")
+        frameId.attr("src", "https://www.youtube.com/embed/5qap5aO4i9A")
     } else if (y.toLowerCase() === "electronic") {
-        frameId.attr("src", "")
+        frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A")
     } else {
         alert("we dont have that shhhiii");
     }
