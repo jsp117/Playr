@@ -6,8 +6,13 @@ body {
     width: 100%;
     margin-bottom: 25px;
     font-family: 'Thasadith', sans-serif;
-    /* add when sizing fixed */
     overflow: hidden;
+}
+
+#brandName {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 300px;
 }
 
 #musicInput {
@@ -24,7 +29,11 @@ body {
 
 .maincard {
     margin-top: 130px;
-    opacity: 70%;
+    opacity: 85%
+}
+
+#musicbox {
+    padding-top: 500px;
 }
 
 #aboutUsCon {
@@ -53,6 +62,7 @@ body {
     background-color: #b3b3b3;
     margin-right: 30px;
     margin-top: 20px;
+    margin-left: 30px;
 }
 
 .infoBox {
@@ -63,6 +73,7 @@ body {
     background-color: #b3b3b3;
     margin-right: 30px;
     margin-bottom: 20px;
+    margin-left: 30px;
 }
 
 #ytGrid {
