@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PLAYR</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+
+    <!-- Tailwind CSS Reset StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="public/build/style.css" />
+    <!-- Font Awesome if you need it -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+    <!-- AOS Stylesheet -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Tailwind CSS Stylesheet -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" type="text/css" rel="stylesheet" />
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" type="text/css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Philosopher&family=Pontano+Sans&family=Thasadith:ital,wght@0,400;0,700;1,400&family=Yeseva+One&display=swap"
+        rel="stylesheet" />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <!--Tailwind Custom Forms - use to standardise form fields - https://github.com/tailwindcss/custom-forms-->
+</head>
+
+<body class="font-sans leading-normal tracking-normal">
+    <!-- Starting Container -->
+
+    <nav class="bg-gray-600 opacity-75">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-16">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
+                        aria-label="Mani menu" x-bind:aria-expanded="open">
+            
+                    <!-- Icon when menu is closed -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open }" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                      </svg>
+              
+                    <!-- Icon when menu is open -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                </div>
+                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex-shrink-0">
+                        <!-- Replace this with out logo -->
+                        <!-- <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo" />
+                        <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo" /> -->
+                    </div>
+                    <div class="hidden sm:block sm:ml-6">
+                        <div class="flex">
+                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                            <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center mt-1 relative rounded-md shadow-sm h-24">
+                        <div class="absolute inset-y-0 flex text-center items-center pointer-events-none">
+                        </div>
+                        <input id="musicInput" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="Search Music" type="search">
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
+              <!-- Heroicon name: bell -->
+                  <svg class="h-6 w-6" x-description="Heroicon name: bell" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round"  stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                </button>
+
+                    <!-- <div class="row col-span-1">
+                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow transform rotate-180 float-right mb-20" id="downButton"><svg class="animate-bounce w-6 h-6 text-gray-900 transform rotate-180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+              </button>
+                </div> -->
+
+                    <!-- Profile dropdown -->
+                    <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                        <div>
+                            <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
+                          <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
+                        </button>
+                        </div>
+
+                        <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                            x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
+                            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                                <ul class="musicDropdown">
+                                    <li class="list-none" id="artist">
+                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
+                                    </li>
+                                    <li id="genre">
+                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
+                                    </li>
+                                    <li id="album">
+                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'block' : open, 'hidden': !open }" class="hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+                <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Card -->
+    <div class="container mx-auto">
+        <div class="row" style="height: 1000px" id="brandName">PLAYR</div>
+        <div id="stop"></div>
+        <!-- test to get autoscroll working -->
+        <div id="space" style="height: 500px"></div>
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 maincard relative" data-aos="flip-up" data-aos-duration="3000">
+            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-black-900">
+                    <div class="flex mb-4">
+                        <iframe class="static" id="youtubePly" width="45%" style="height:320px" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="static ml-18" id="music" width="55%" style="height:fit-content" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>
+                    </div>
+                </h3>
+            </div>
+            <div>
+                <div class="grid grid-rows-3 grid-flow-col gap-4 playlistBox">
+                    <!-- Music History Playlist -->
+                    <div id="lyrics" class="row-span-3 searchHistory">
+
+                    </div>
+                    <div id="player" class="row-span-1 col-span-2 overscroll-auto overflow-auto h-40 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg: max-h-sm musicPlayer">
+
+                    </div>
+                    <div id="youtube" class="row-span-2 col-span-2 overscroll-auto overflow-auto h-56 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg: max-h-sm musicPlaylist">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card displays YT Playlist -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-20 opacity-75 float-left mb-40 albumCover" data-aos="fade-right" data-aos-duration="3000">
+            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-black-900">
+                    PLAYR
+                </h3>
+            </div>
+            <div class="h-64 grid grid-rows-3 grid-flow-col gap-4 p-3" id="ytGrid">
+                <div class="grid block gap-4 bg-gray-500 text-center">1</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">2</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">3</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">4</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">5</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">6</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">7</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">8</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">9</div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-20 ml-5 opacity-75 float-left mb-40 albumCover" data-aos="fade-left" data-aos-duration="3000">
+            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-black-900">
+                    PLAYR
+                </h3>
+            </div>
+            <div class="h-64 grid grid-rows-3 grid-flow-col gap-4 p-3" id="scGrid">
+                <div class="grid block gap-4 bg-gray-500 text-center">1</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">2</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">3</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">4</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">5</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">6</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">7</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">8</div>
+                <div class="grid block gap-4 bg-gray-500 text-center">9</div>
+            </div>
+        </div>
+        <div class="row col-span-1">
+            <p class="float-right text-white">Back to Top</p>
+        </div>
+        <br>
+        <div class="row col-span-1">
+            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow transform rotate-180 float-right mb-20" id="upButton"><svg class="animate-bounce w-6 h-6 text-gray-900 transform rotate-180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+          </button>
+        </div>
+
+
+        <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- tailwind js styl -->
+        <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2/highlight.pack.min.js,npm/axios@0.19.2/dist/axios.min.js,npm/dlv@1.1.3/dist/dlv.umd.min.js,gh/alpinejs/alpine@v2.2.1/dist/alpine.js,npm/fuse.js@5.0.9-beta/dist/fuse.min.js"></script>
+        <script src="/js/app.js?id=b4b05d28e9cc2aa52134"></script>
+        <script src="/js/prism.js?id=15deb4e2ec03d399dcb3"></script>
+        <!-- end of stle css -->
+        <script>
+            AOS.init();
+        </script>
+        <script src="script.js"></script>
+        <script>
+            export default {
+                data() {
+                    return {
+                        isOpen: false
+                    }
+                }
+            }
+        </script>
+</body>
+
+</html>
