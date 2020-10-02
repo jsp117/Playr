@@ -401,13 +401,16 @@ $('#downButton').click(function() {
     return false;
 });
 
-
-
-
-function savePlaylist() {
-
-
+function pageOpen() {
+    $("HTML, BODY").animate({
+        scrollTop: 0
+    }, 1000);
 }
+
+pageOpen();
+
+
+
 
 // youtube playlist for genre
 // function youtubePlaylist(){
