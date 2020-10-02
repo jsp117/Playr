@@ -3,7 +3,6 @@ var sn1 = [];
 var songLinks = [];
 var songNames = [];
 var remove4 = [];
-var count = 0;
 var sc1 = [];
 var sc = [];
 var sc1Names = [];
@@ -16,12 +15,13 @@ var songNames = [];
 var youtubeLinks = [];
 var song;
 var artist;
+var count = 0;
 
 // https://openwhyd.org/u/4d94501d1f78ac091dbc9b4d/playlist/10?format=links&limit=10000 - working to post 10000 links from adrians profile
 function music(x) {
   $.ajax({
 
-    url: "https://cors-anywhere.herokuapp.com/https://openwhyd.org/hot/" + x + "?format=json&limit=500",
+    url: "https://cors-anywhere.herokuapp.com/https://openwhyd.org/hot/" + x + "?format=json&limit=1000",
     method: "GET",
     error: function (e) {
       alert("connection issues");
@@ -51,7 +51,7 @@ function music(x) {
     // songlinks, songNames = youtube songs/names
     // randomize youtube songs/names
     for (var i = 0; i < sl1.length; i++) {
-      var x = Math.floor(Math.random() * sl1.length) + 1;
+      var x = Math.floor(Math.random() * sl1.length);
       var y = sl1[i];
       sl1[i] = sl1[x];
       sl1[x] = y;
@@ -67,7 +67,7 @@ function music(x) {
 
     // randomize soundcloud songs/names
     for (var i = 0; i < sc1.length; i++) {
-      var x = Math.floor(Math.random() * sc1.length) + 1;
+      var x = Math.floor(Math.random() * sc1.length);
       var y = sc1[i];
       sc1[i] = sc1[x];
       sc1[x] = y;
@@ -75,13 +75,17 @@ function music(x) {
       sc1Names[i] = sc1Names[x];
       sc1Names[x] = a;
     }
-
-    for (var i = 0; i < 15; i++) {
-      sc.push(sc1[i]);
-      scNames.push(sc1Names[i]);
+    if (sc1.length < 15) {
+      for (var i = 0; i < sc1.length; i++) {
+        sc.push(sc1[i]);
+        scNames.push(sc1Names[i]);
+      }
+    } else {
+      for (var i = 0; i < 15; i++) {
+        sc.push(sc1[i]);
+        scNames.push(sc1Names[i]);
+      }
     }
-
-
 
     // if there are youtube songs
     if (songLinks.length > 0) {
@@ -112,7 +116,12 @@ function music(x) {
 
 // checks if the song has available lyrics and for song id on musixmatch
 function lyricsFinder(x, y) {
-  console.log("song name, artist name: " + x + y)
+  if (x === undefined || y === undefined) {
+    $("#lyrics").attr("style", "display: none;");
+    return console.log("song and or artist undefined");
+
+  }
+  // console.log("song name, artist name: " + x + y);
   // console.log("soundcloud name");
   // console.log(scNames[0]);
   $.ajax({
@@ -127,20 +136,17 @@ function lyricsFinder(x, y) {
     }
   }).then(function (response) {
     console.log(response);
+
     if (response.message.header.available === 0) {
       $("#lyrics").attr("style", "display: none");
       return;
-
-
     } else {
-
       var hasLyrics = response.message.body.track_list[0].track.has_lyrics;
       var trackId = response.message.body.track_list[0].track.track_id;
       if (hasLyrics === 1) {
         $("#lyrics").attr("style", "display: inline-block");
         lyrics(trackId);
       }
-
     }
   });
 }
@@ -179,26 +185,30 @@ function youtube() {
     youtubeLinks.push("http://www.youtube.com/watch?v=" + remove4[i]);
   }
   for (var i = 0; i < youtubeLinks.length; i++) {
-    var li = $("<a>");
-    var br = $("<br>");
-    li.attr("href", youtubeLinks[i]).attr("target", "_blank");
-    li.text((i + 1) + ": " + songNames[i]);
-    $("#youtube").append(li);
-    $("#youtube").append(br);
+      // var li = $("<div>");
+    // var br = $("<br>");
+    var aTag = $("<a>");
+    var div = $("<div>").attr("id", i + "div");
+    // li.attr("id", i);
+    aTag.text((i + 1) + ": " + songNames[i]);
+    $("#youtube").append(aTag);
+    $("#youtube").append(div);
+    // wraps div tag with 'a' tag
+    $("#"+ i + "div").wrap("<a class = 'new'></a>");
+    aTag.attr("href", youtubeLinks[i]).attr("target", "_blank");
+    // $("#youtube").append(br);
   }
-  // console.log(youtubeLinks);
   // push stills of youtube videos to div on page - with working link to youtube
-  // $("#youtube").text(youtubeLinks);
-  // $("#player").text(sc);
 }
 
 function soundcloud() {
   // returns second piece of split string
-  console.log("soundcloud links: " + sc);
+  // console.log("soundcloud links: " + sc);
+  console.log(sc);
   newArray = sc.map(function (i) {
     return i[0].split("https").pop();
   });
-  console.log("after first split: " + newArray);
+  // console.log("after first split: " + newArray);
   // takes "stream" off end of each string in array
 
   // removes stream but adds comma
@@ -263,6 +273,9 @@ function soundcloud() {
 $("#player").on("click", "p", function () {
   var scLink = this.id;
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
+
+
+
   console.log("BEFORE songname: " + songNames[scLink] + " artist: " + bandNames[scLink]);
 
 
@@ -293,7 +306,12 @@ $("#musicInput").on("keydown", function (event) {
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
-  remove4.length = 0;
+  alter.length = 0;
+  bandNames.length = 0;
+  sc1.length = 0;
+  sc1Names.length = 0;
+  sl1.length = 0;
+  sn1.length = 0;
   youtubeLinks.length = 0;
   scNames.length = 0;
   sc.length = 0;
@@ -312,7 +330,6 @@ $("#musicInput").on("keydown", function (event) {
     console.log(genre);
     music(genre);
   }
-
 });
 
 
