@@ -329,8 +329,60 @@ $("#musicInput").on("keydown", function (event) {
     }, 2000);
     console.log(genre);
     music(genre);
+    youtubePlay(genre);
   }
 });
+
+
+function youtubePlay(y) {
+  var frameId = $("#youtubePly");
+  if (y.toLowerCase() === "rock") {
+      frameId.attr("src", "https://www.youtube.com/embed/PsR_C4GTgFg");
+  } else if (y.toLowerCase() === "indie") {
+      frameId.attr("src", "https://www.youtube.com/embed/_3Jy1wc8pOg");
+  } else if (y.toLowerCase() === "study") {
+      frameId.attr("src", "https://www.youtube.com/embed/f02mOEt11OQ")
+  } else if (y.toLowerCase() === "pop") {
+      frameId.attr("src", "https://www.youtube.com/embed/Owg9esIqG_Y")
+  } else if (y.toLowerCase() === "blues") {
+      frameId.attr("src", "https://www.youtube.com/embed/qD9bZ7AQwPI")
+  } else if (y.toLowerCase() === "punk") {
+      frameId.attr("src", "https://www.youtube.com/embed/n5iuZkETnsE")
+  } else if (y.toLowerCase() === "metal") {
+      frameId.attr("src", "https://www.youtube.com/embed/j6niFit62ss")
+  } else if (y.toLowerCase() === "r&b") {
+      frameId.attr("src", "https://www.youtube.com/embed/4q2RH5-HBRE")
+  } else if (y.toLowerCase() === "soul") {
+      frameId.attr("src", "https://www.youtube.com/embed/pN4ocNJSP6s")
+  } else if (y.toLowerCase() === "jazz") {
+      frameId.attr("src", "https://www.youtube.com/embed/Oxt4Ut_Q55I")
+  } else if (y.toLowerCase() === "classical") {
+      frameId.attr("src", "https://www.youtube.com/embed/tPO9jxUKIsc")
+  } else if (y.toLowerCase() === "reggae") {
+      frameId.attr("src", "https://www.youtube.com/embed/JPctC3HNLwM")
+  } else if (y.toLowerCase() === "latin") {
+      frameId.attr("src", "https://www.youtube.com/embed/XaWLdx_ake8")
+  } else if (y.toLowerCase() === "world") {
+      frameId.attr("src", "https://www.youtube.com/embed/NgN12_xNHb0")
+  } else if (y.toLowerCase() === "hip hop") {
+      frameId.attr("src", "https://www.youtube.com/embed/5qap5aO4i9A")
+  } else if (y.toLowerCase() === "electronic") {
+      frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A")
+  } else {
+      alert("we dont have that shhhiii");
+  }
+
+}
+
+$("#upButton").on("click", function() {
+  $(function() {
+      $("#upButton").on('click', function() {
+          $("HTML, BODY").animate({
+              scrollTop: 0
+          }, 1000);
+      });
+  });
+})
 
 
 // youtube playlist for genre
