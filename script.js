@@ -1,20 +1,26 @@
+var sl1 = [];
+var sn1 = [];
 var songLinks = [];
 var songNames = [];
 var remove4 = [];
 var count = 0;
+var sc1 = [];
 var sc = [];
+var sc1Names = [];
 var scNames = [];
 var alter = [];
 var newArray = [];
 var finalArray = [];
 var bandNames = [];
 var songNames = [];
+var youtubeLinks = [];
+var testArray = [];
 
 // https://openwhyd.org/u/4d94501d1f78ac091dbc9b4d/playlist/10?format=links&limit=10000 - working to post 10000 links from adrians profile
 function music(x) {
   $.ajax({
 
-    url: "https://cors-anywhere.herokuapp.com/https://openwhyd.org/hot/" + x + "?format=json&limit=100",
+    url: "https://cors-anywhere.herokuapp.com/https://openwhyd.org/hot/" + x + "?format=json&limit=500",
     method: "GET",
     error: function (e) {
       alert("connection issues");
@@ -23,29 +29,64 @@ function music(x) {
   }).then(function (response) {
     console.log(response);
     for (var i = 0; i < response.tracks.length; i++) {
-      songLinks.push(response.tracks[i].eId);
-      songNames.push(response.tracks[i].name);
+      sl1.push(response.tracks[i].eId);
+      sn1.push(response.tracks[i].name);
     }
     // splits soundcloud and youtube links/artists
-    for (var i = 0; i < songLinks.length; i++) {
-      var verify = songLinks[i];
+    for (var i = 0; i < sl1.length; i++) {
+      var verify = sl1[i];
       // checks for soundcloud links - moves them to new array
       if (verify.substring(0, 4) === "/sc/") {
         // use splice to remove soundcloud link at index i, 1 item 
-        var move = songLinks.splice(i, 1);
-        var moveNames = songNames.splice(i, 1);
-        sc.push(move);
-        scNames.push(moveNames);
+        var move = sl1.splice(i, 1);
+        var moveNames = sn1.splice(i, 1);
+        sc1.push(move);
+        sc1Names.push(moveNames);
         // console.log(sc);
         count++;
       }
     }
 
+    // songlinks, songNames = youtube songs/names
+    // randomize youtube songs/names
+    for (var i = 0; i < sl1.length; i++) {
+      var x = Math.floor(Math.random() * sl1.length) + 1;
+      var y = sl1[i];
+      sl1[i] = sl1[x];
+      sl1[x] = y;
+      var a = sn1[i];
+      sn1[i] = sn1[x];
+      sn1[x] = a;
+    }
+
+    for (var i = 0; i < 15; i++) {
+      songLinks.push(sl1[i]);
+      songNames.push(sn1[i]);
+    }
+
+    // randomize soundcloud songs/names
+    for (var i = 0; i < sc1.length; i++) {
+      var x = Math.floor(Math.random() * sc1.length) + 1;
+      var y = sc1[i];
+      sc1[i] = sc1[x];
+      sc1[x] = y;
+      var a = sc1Names[i];
+      sc1Names[i] = sc1Names[x];
+      sc1Names[x] = a;
+    }
+
+    for (var i = 0; i < 15; i++) {
+      sc.push(sc1[i]);
+      scNames.push(sc1Names[i]);
+    }
+
+
+
     // if there are youtube songs
     if (songLinks.length > 0) {
       $("#youtube").attr("style", "display: inline-block;");
       youtube();
-    }else{
+    } else {
       $("#youtube").attr("style", "display: none;");
       $("#lyrics").attr("style", "display: none;");
     }
@@ -97,7 +138,7 @@ function lyricsFinder(x, y) {
       if (hasLyrics === 1) {
         $("#lyrics").attr("style", "display: inline-block");
         lyrics(trackId);
-      } 
+      }
 
     }
   });
@@ -129,11 +170,11 @@ function youtube() {
   // for each item in songLinks - take 4 characters from the front of each item - provides youtube links
   remove4 = songLinks.map(s => s.slice(4));
 
-  var youtubeLinks = [];
+  youtubeLinks = [];
 
   // $("#youtube").attr("src", "http://www.youtube.com/watch?v=" + remove4[0]);
 
-  for (var i = 0; i < 16; i++) {
+  for (var i = 0; i < songLinks.length; i++) {
     youtubeLinks.push("http://www.youtube.com/watch?v=" + remove4[i]);
   }
   for (var i = 0; i < youtubeLinks.length; i++) {
@@ -152,12 +193,36 @@ function youtube() {
 
 function soundcloud() {
   // returns second piece of split string
+  console.log("soundcloud links: " + sc);
   newArray = sc.map(function (i) {
     return i[0].split("https").pop();
   });
-
+  console.log("after first split: " + newArray);
   // takes "stream" off end of each string in array
-  finalArray = newArray.map(x => x.slice(0, -7));
+
+  // removes stream but adds comma
+  // for (var i = 0; i < newArray.length; i++) {
+  //   finalArray.push(newArray[i].split("/stream"));
+  // }
+  // for (var i = 0; i < finalArray.length; i++) {
+  //   testArray.push(finalArray[i].split(","));
+  // }
+
+  // working to remove stream where it exists
+  for (var i = 0; i < newArray.length; i++) {
+    if (newArray[i].includes("/stream")) {
+      finalArray[i] = newArray[i].slice(0, -7);
+    } else {
+      finalArray.push(newArray[i]);
+    }
+  }
+
+  // removes 7 characters regardless of stream existing at the end
+  // finalArray = newArray.map(function (n){
+  //   return n[0].split("/stream");
+  // });
+  console.log("after split" + finalArray);
+  // finalArray = newArray.map(x => x.slice(0, -7));
   // adds working soundcloud link to soundcloud player
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0]);
 
@@ -191,9 +256,10 @@ $("#player").on("click", "p", function () {
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 });
 
-$("#top").on("click", function(){
+$("#top").on("click", function () {
   $('html, body').animate({
-    scrollTop: '0px'}, 2000);
+    scrollTop: '0px'
+  }, 2000);
 
 });
 
@@ -203,6 +269,9 @@ $("#musicInput").on("keydown", function (event) {
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
+  testArray.length = 0;
+  remove4.length = 0;
+  youtubeLinks.length = 0;
   scNames.length = 0;
   sc.length = 0;
   newArray.length = 0;
