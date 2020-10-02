@@ -14,7 +14,8 @@ var finalArray = [];
 var bandNames = [];
 var songNames = [];
 var youtubeLinks = [];
-var testArray = [];
+var song;
+var artist;
 
 // https://openwhyd.org/u/4d94501d1f78ac091dbc9b4d/playlist/10?format=links&limit=10000 - working to post 10000 links from adrians profile
 function music(x) {
@@ -127,8 +128,8 @@ function lyricsFinder(x, y) {
   }).then(function (response) {
     console.log(response);
     if (response.message.header.available === 0) {
-      $("#lyrics").text("No Lyrics Available");
       $("#lyrics").attr("style", "display: none");
+      return;
 
 
     } else {
@@ -244,8 +245,16 @@ function soundcloud() {
     li.text((i + 1) + ": " + scNames[i]);
     $("#player").append(li);
   }
+  // not working properly
+  if (songNames[0].includes("(")) {
+    song = songNames[0].split("(");
+  }
+  if (songNames[0].includes(",")) {
+    song = songNames[0].split(",");
+  }
 
-  lyricsFinder(songNames[0], bandNames[0]);
+
+  lyricsFinder(song, artist);
   // soundcloud working embedded player link
   // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
@@ -254,6 +263,21 @@ function soundcloud() {
 $("#player").on("click", "p", function () {
   var scLink = this.id;
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
+  console.log("BEFORE songname: " + songNames[scLink] + " artist: " + bandNames[scLink]);
+
+
+  // not working properly
+  if (songNames[scLink].includes("(")) {
+    song = songNames[scLink].split("(");
+    song = song.toString();
+  }
+  if (songNames[scLink].includes(",")) {
+    song = songNames[scLink].split(",");
+    song = song.toString();
+  }
+  console.log("AFTER songname: " + song + " artist: " + artist);
+  lyricsFinder(song, artist);
+
 });
 
 $("#top").on("click", function () {
@@ -269,7 +293,6 @@ $("#musicInput").on("keydown", function (event) {
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
-  testArray.length = 0;
   remove4.length = 0;
   youtubeLinks.length = 0;
   scNames.length = 0;
