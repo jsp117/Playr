@@ -140,6 +140,7 @@ function lyricsFinder(x, y) {
 
     if (response.message.header.available === 0) {
       $("#lyrics").attr("style", "display: none");
+      console.log("no lyrics available");
       return;
     } else {
       var hasLyrics = response.message.body.track_list[0].track.has_lyrics;
@@ -163,13 +164,16 @@ function lyrics(x) {
 
     error: function (e) {
       alert("connection issues");
-
+      $("#lyrics").attr("style", "display: none");
     }
   }).then(function (response) {
     // console.log("Musixmatch response: ");
     // console.log(response.message.body.lyrics.lyrics_body);
     var lyrics = response.message.body.lyrics.lyrics_body;
-    $("#lyrics").text(lyrics);
+    var lyricEle = $("<p>");
+    lyricEle.text(lyrics);
+    lyricEle.attr("style", "margin-left: 60px; margin-top: 60px;");
+    $("#lyrics").append(lyricEle);
   });
 
 }
@@ -293,6 +297,8 @@ function soundcloud() {
 
 // plays song on click
 $("#player").on("click", "p", function () {
+  $("#lyrics").attr("style", "display: none");
+  $("#lyrics").empty();
   var scLink = this.id;
   $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 
@@ -340,6 +346,7 @@ $("#player").on("click", "p", function () {
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
   $("body").attr("style", "overflow: visible;");
+  $("#lyrics").attr("style", "display: none");
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
@@ -422,6 +429,13 @@ $("#upButton").on("click", function () {
     });
   });
 })
+
+$('#downButton').click(function() {
+  $('html, body').animate({
+      scrollTop: 0
+  }, 'slow');
+  return false;
+});
 
 
 // youtube playlist for genre
