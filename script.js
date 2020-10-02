@@ -236,18 +236,31 @@ function soundcloud() {
         li.text((i + 1) + ": " + scNames[i]);
         $("#player").append(li);
     }
-    // not working properly
-    //  if (songNames[scLink].includes("(")) {
-    //     song = songNames[scLink].split("(");
-    //     song = song.toString();
-    //   }
-    //   if (songNames[scLink].includes(",")) {
-    //     song = songNames[scLink].split(",");
-    //     song = song.toString();
-    //   }
-    // lyricsFinder(song, artist);
+    song = songNames[0];
+    artist = bandNames[0];
 
-    lyricsFinder(songNames[0], bandNames[0]);
+    // removes excess characters from song/artist names
+    if (song[0].includes("feat")) {
+        song = song[0].split("feat")[0];
+    }
+    if (song[0].includes("(")) {
+        song = song[0].split("(")[0];
+    }
+    if (song[0].includes(",")) {
+        song = song[0].split(",")[0];
+    }
+
+    if (artist[0].includes("Ft")) {
+        artist = artist[0].split("Ft")[0];
+    }
+    if (artist.includes("(")) {
+        artist = artist[0].split("(")[0];
+    }
+    if (artist.includes(",")) {
+        artist = artist[0].split(",")[0];
+    }
+
+    lyricsFinder(song, artist);
     // soundcloud working embedded player link
     // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
@@ -257,18 +270,29 @@ $("#player").on("click", "p", function() {
     var scLink = this.id;
     $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 
-    //   console.log("BEFORE songname: " + songNames[scLink] + " artist: " + bandNames[scLink]);
-    // not working properly
-    //   if (songNames[scLink].includes("(")) {
-    //     song = songNames[scLink].split("(");
-    //     song = song.toString();
-    //   }
-    //   if (songNames[scLink].includes(",")) {
-    //     song = songNames[scLink].split(",");
-    //     song = song.toString();
-    //   }
-    //   console.log("AFTER songname: " + song + " artist: " + artist);
-    //   lyricsFinder(song, artist);
+    // removes excess characters from song/artist names
+    if (song.includes("feat")) {
+        song = song.split("feat")[0];
+        console.log("WORKING");
+    }
+    if (song.includes("(")) {
+        song = song.split("(")[0];
+    }
+    if (song.includes(",")) {
+        song = song.split(",")[0];
+    }
+
+    if (artist.includes("Ft")) {
+        artist = artist.split("Ft")[0];
+    }
+    if (artist.includes("(")) {
+        artist = artist.split("(")[0];
+    }
+    if (artist.includes(",")) {
+        artist = artist.split(",")[0];
+    }
+
+    lyricsFinder(song, artist);
 });
 
 // clicking top button will scroll to top of page
@@ -303,7 +327,7 @@ $("#musicInput").on("keydown", function(event) {
         var genre = $("#musicInput").val();
         // autoscroll to maincard
         $([document.documentElement, document.body]).animate({
-            scrollTop: $("#stop").offset().top
+            scrollTop: $(".maincard").offset().top - 425
         }, 2000);
 
         console.log(genre);
@@ -320,33 +344,33 @@ function youtubePlay(y) {
     } else if (y.toLowerCase() === "indie") {
         frameId.attr("src", "https://www.youtube.com/embed/_3Jy1wc8pOg");
     } else if (y.toLowerCase() === "study") {
-        frameId.attr("src", "https://www.youtube.com/embed/f02mOEt11OQ")
+        frameId.attr("src", "https://www.youtube.com/embed/f02mOEt11OQ");
     } else if (y.toLowerCase() === "pop") {
-        frameId.attr("src", "https://www.youtube.com/embed/Owg9esIqG_Y")
+        frameId.attr("src", "https://www.youtube.com/embed/Owg9esIqG_Y");
     } else if (y.toLowerCase() === "blues") {
-        frameId.attr("src", "https://www.youtube.com/embed/qD9bZ7AQwPI")
+        frameId.attr("src", "https://www.youtube.com/embed/qD9bZ7AQwPI");
     } else if (y.toLowerCase() === "punk") {
-        frameId.attr("src", "https://www.youtube.com/embed/n5iuZkETnsE")
+        frameId.attr("src", "https://www.youtube.com/embed/n5iuZkETnsE");
     } else if (y.toLowerCase() === "metal") {
-        frameId.attr("src", "https://www.youtube.com/embed/j6niFit62ss")
+        frameId.attr("src", "https://www.youtube.com/embed/j6niFit62ss");
     } else if (y.toLowerCase() === "r&b") {
-        frameId.attr("src", "https://www.youtube.com/embed/4q2RH5-HBRE")
+        frameId.attr("src", "https://www.youtube.com/embed/4q2RH5-HBRE");
     } else if (y.toLowerCase() === "soul") {
-        frameId.attr("src", "https://www.youtube.com/embed/pN4ocNJSP6s")
+        frameId.attr("src", "https://www.youtube.com/embed/pN4ocNJSP6s");
     } else if (y.toLowerCase() === "jazz") {
-        frameId.attr("src", "https://www.youtube.com/embed/Oxt4Ut_Q55I")
+        frameId.attr("src", "https://www.youtube.com/embed/Oxt4Ut_Q55I");
     } else if (y.toLowerCase() === "classical") {
-        frameId.attr("src", "https://www.youtube.com/embed/tPO9jxUKIsc")
+        frameId.attr("src", "https://www.youtube.com/embed/tPO9jxUKIsc");
     } else if (y.toLowerCase() === "reggae") {
-        frameId.attr("src", "https://www.youtube.com/embed/JPctC3HNLwM")
+        frameId.attr("src", "https://www.youtube.com/embed/JPctC3HNLwM");
     } else if (y.toLowerCase() === "latin") {
-        frameId.attr("src", "https://www.youtube.com/embed/XaWLdx_ake8")
+        frameId.attr("src", "https://www.youtube.com/embed/XaWLdx_ake8");
     } else if (y.toLowerCase() === "world") {
-        frameId.attr("src", "https://www.youtube.com/embed/NgN12_xNHb0")
+        frameId.attr("src", "https://www.youtube.com/embed/NgN12_xNHb0");
     } else if (y.toLowerCase() === "hip hop") {
-        frameId.attr("src", "https://www.youtube.com/embed/5qap5aO4i9A")
+        frameId.attr("src", "https://www.youtube.com/embed/5qap5aO4i9A");
     } else if (y.toLowerCase() === "electronic") {
-        frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A")
+        frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A");
     } else {
         alert("we dont have that shhhiii");
     }
@@ -362,6 +386,13 @@ $("#upButton").on("click", function() {
         });
     });
 })
+
+$('#downButton').click(function() {
+    $('html, body').animate({
+        scrollTop: 0
+    }, 'slow');
+    return false;
+});
 
 // youtube playlist for genre
 // function youtubePlaylist(){

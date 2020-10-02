@@ -1,0 +1,24 @@
+{
+    "name": "playr",
+    "version": "1.0.0",
+    "description": "",
+    "main": "script.js",
+    "scripts": {
+        "build": "npx tailwindcss build css/tailwindcss.css -o public/build/style.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jsp117/Playr.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jsp117/Playr/issues"
+    },
+    "homepage": "https://github.com/jsp117/Playr#readme",
+    "dependencies": {
+        "autoprefixer": "^10.0.1",
+        "postcss-cli": "^8.0.0",
+        "tailwindcss": "^1.8.10"
+    }
+}
