@@ -17,6 +17,7 @@ var song;
 var artist;
 var count = 0;
 
+
 // https://openwhyd.org/u/4d94501d1f78ac091dbc9b4d/playlist/10?format=links&limit=10000 - working to post 10000 links from adrians profile
 function music(x) {
   $.ajax({
@@ -185,7 +186,7 @@ function youtube() {
     youtubeLinks.push("http://www.youtube.com/watch?v=" + remove4[i]);
   }
   for (var i = 0; i < youtubeLinks.length; i++) {
-      // var li = $("<div>");
+    // var li = $("<div>");
     // var br = $("<br>");
     var aTag = $("<a>");
     var div = $("<div>").attr("id", i + "div");
@@ -194,7 +195,7 @@ function youtube() {
     $("#youtube").append(aTag);
     $("#youtube").append(div);
     // wraps div tag with 'a' tag
-    $("#"+ i + "div").wrap("<a class = 'new'></a>");
+    $("#" + i + "div").wrap("<a class = 'new'></a>");
     aTag.attr("href", youtubeLinks[i]).attr("target", "_blank");
     // $("#youtube").append(br);
   }
@@ -239,15 +240,19 @@ function soundcloud() {
 
   // grab soundcloud artist name
   bandNames = scNames.map(function (n) {
-    return n[0].split(" - ");
+    if (n[0].includes(" - ")) {
+      return n[0].split(" - ")[0];
+    } else {
+      return n;
+    }
+    // return n[0].split(" - ");
   });
+  console.log("first split band : " + bandNames);
   // grabs song names 
   songNames = scNames.map(function (n) {
     return n[0].split(" - ").pop();
   });
-  console.log("bandNames = " + bandNames);
-  console.log("songNames = " + songNames);
-
+  console.log("first split song : " + songNames);
   // display soundcloud song names on id player
   for (var i = 0; i < scNames.length; i++) {
     var li = $("<p>");
@@ -255,12 +260,29 @@ function soundcloud() {
     li.text((i + 1) + ": " + scNames[i]);
     $("#player").append(li);
   }
-  // not working properly
-  if (songNames[0].includes("(")) {
-    song = songNames[0].split("(");
+  // remove extra characters from song/artist names
+  song = songNames[0];
+  artist = bandNames[0];
+
+  // removes excess characters from song/artist names
+  if (song[0].includes("feat")) {
+    song = song[0].split("feat")[0];
   }
-  if (songNames[0].includes(",")) {
-    song = songNames[0].split(",");
+  if (song[0].includes("(")) {
+    song = song[0].split("(")[0];
+  }
+  if (song[0].includes(",")) {
+    song = song[0].split(",")[0];
+  }
+
+  if (artist[0].includes("Ft")) {
+    artist = artist[0].split("Ft")[0];
+  }
+  if (artist.includes("(")) {
+    artist = artist[0].split("(")[0];
+  }
+  if (artist.includes(",")) {
+    artist = artist[0].split(",")[0];
   }
 
 
@@ -277,28 +299,43 @@ $("#player").on("click", "p", function () {
 
 
   console.log("BEFORE songname: " + songNames[scLink] + " artist: " + bandNames[scLink]);
+  song = songNames[scLink];
+  artist = bandNames[scLink];
+
+  // removes excess characters from song/artist names
+  if (song.includes("feat")) {
+    song = song.split("feat")[0];
+    console.log("WORKING");
+  }
+  if (song.includes("(")) {
+    song = song.split("(")[0];
+  }
+  if (song.includes(",")) {
+    song = song.split(",")[0];
+  }
+
+  if (artist.includes("Ft")) {
+    artist = artist.split("Ft")[0];
+  }
+  if (artist.includes("(")) {
+    artist = artist.split("(")[0];
+  }
+  if (artist.includes(",")) {
+    artist = artist.split(",")[0];
+  }
 
 
-  // not working properly
-  if (songNames[scLink].includes("(")) {
-    song = songNames[scLink].split("(");
-    song = song.toString();
-  }
-  if (songNames[scLink].includes(",")) {
-    song = songNames[scLink].split(",");
-    song = song.toString();
-  }
   console.log("AFTER songname: " + song + " artist: " + artist);
   lyricsFinder(song, artist);
 
 });
 
-$("#top").on("click", function () {
-  $('html, body').animate({
-    scrollTop: '0px'
-  }, 2000);
+// $("#top").on("click", function () {
+//   $('html, body').animate({
+//     scrollTop: '0px'
+//   }, 2000);
 
-});
+// });
 
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
@@ -324,9 +361,11 @@ $("#musicInput").on("keydown", function (event) {
   if (event.keyCode == 13) {
     var genre = $("#musicInput").val();
     // auto scroll to main content on enter
+    var div = $(".maincard");
     $([document.documentElement, document.body]).animate({
-      scrollTop: $("#stop").offset().top
+      scrollTop: $(".maincard").offset().top - 425
     }, 2000);
+
     console.log(genre);
     music(genre);
     youtubePlay(genre);
@@ -337,50 +376,50 @@ $("#musicInput").on("keydown", function (event) {
 function youtubePlay(y) {
   var frameId = $("#youtubePly");
   if (y.toLowerCase() === "rock") {
-      frameId.attr("src", "https://www.youtube.com/embed/PsR_C4GTgFg");
+    frameId.attr("src", "https://www.youtube.com/embed/PsR_C4GTgFg");
   } else if (y.toLowerCase() === "indie") {
-      frameId.attr("src", "https://www.youtube.com/embed/_3Jy1wc8pOg");
+    frameId.attr("src", "https://www.youtube.com/embed/_3Jy1wc8pOg");
   } else if (y.toLowerCase() === "study") {
-      frameId.attr("src", "https://www.youtube.com/embed/f02mOEt11OQ")
+    frameId.attr("src", "https://www.youtube.com/embed/f02mOEt11OQ");
   } else if (y.toLowerCase() === "pop") {
-      frameId.attr("src", "https://www.youtube.com/embed/Owg9esIqG_Y")
+    frameId.attr("src", "https://www.youtube.com/embed/Owg9esIqG_Y");
   } else if (y.toLowerCase() === "blues") {
-      frameId.attr("src", "https://www.youtube.com/embed/qD9bZ7AQwPI")
+    frameId.attr("src", "https://www.youtube.com/embed/qD9bZ7AQwPI");
   } else if (y.toLowerCase() === "punk") {
-      frameId.attr("src", "https://www.youtube.com/embed/n5iuZkETnsE")
+    frameId.attr("src", "https://www.youtube.com/embed/n5iuZkETnsE");
   } else if (y.toLowerCase() === "metal") {
-      frameId.attr("src", "https://www.youtube.com/embed/j6niFit62ss")
+    frameId.attr("src", "https://www.youtube.com/embed/j6niFit62ss");
   } else if (y.toLowerCase() === "r&b") {
-      frameId.attr("src", "https://www.youtube.com/embed/4q2RH5-HBRE")
+    frameId.attr("src", "https://www.youtube.com/embed/4q2RH5-HBRE");
   } else if (y.toLowerCase() === "soul") {
-      frameId.attr("src", "https://www.youtube.com/embed/pN4ocNJSP6s")
+    frameId.attr("src", "https://www.youtube.com/embed/pN4ocNJSP6s");
   } else if (y.toLowerCase() === "jazz") {
-      frameId.attr("src", "https://www.youtube.com/embed/Oxt4Ut_Q55I")
+    frameId.attr("src", "https://www.youtube.com/embed/Oxt4Ut_Q55I");
   } else if (y.toLowerCase() === "classical") {
-      frameId.attr("src", "https://www.youtube.com/embed/tPO9jxUKIsc")
+    frameId.attr("src", "https://www.youtube.com/embed/tPO9jxUKIsc");
   } else if (y.toLowerCase() === "reggae") {
-      frameId.attr("src", "https://www.youtube.com/embed/JPctC3HNLwM")
+    frameId.attr("src", "https://www.youtube.com/embed/JPctC3HNLwM");
   } else if (y.toLowerCase() === "latin") {
-      frameId.attr("src", "https://www.youtube.com/embed/XaWLdx_ake8")
+    frameId.attr("src", "https://www.youtube.com/embed/XaWLdx_ake8");
   } else if (y.toLowerCase() === "world") {
-      frameId.attr("src", "https://www.youtube.com/embed/NgN12_xNHb0")
+    frameId.attr("src", "https://www.youtube.com/embed/NgN12_xNHb0");
   } else if (y.toLowerCase() === "hip hop") {
-      frameId.attr("src", "https://www.youtube.com/embed/5qap5aO4i9A")
+    frameId.attr("src", "https://www.youtube.com/embed/5qap5aO4i9A");
   } else if (y.toLowerCase() === "electronic") {
-      frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A")
+    frameId.attr("src", "https://www.youtube.com/embed/zdYzL6wkr0A");
   } else {
-      alert("we dont have that shhhiii");
+    alert("we dont have that shhhiii");
   }
 
 }
 
-$("#upButton").on("click", function() {
-  $(function() {
-      $("#upButton").on('click', function() {
-          $("HTML, BODY").animate({
-              scrollTop: 0
-          }, 1000);
-      });
+$("#upButton").on("click", function () {
+  $(function () {
+    $("#upButton").on('click', function () {
+      $("HTML, BODY").animate({
+        scrollTop: 0
+      }, 1000);
+    });
   });
 })
 
