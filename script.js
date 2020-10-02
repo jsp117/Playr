@@ -189,14 +189,22 @@ function soundcloud() {
     // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
 
+// plays souncloud song on click
 $("#player").on("click", "p", function() {
     var scLink = this.id;
     $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
+});
 
+// clicking top button will scroll to top of page
+$("#top").on("click", function() {
+    $('html, body').animate({
+        scrollTop: '0px'
+    }, 2000);
 });
 
 $("#musicInput").on("keydown", function(event) {
-    // reset all arrays - empty elements
+    $("body").attr("style", "overflow: visible;")
+        // reset all arrays - empty elements
     $("#lyrics").empty();
     $("#player").empty();
     $("#youtube").empty();
