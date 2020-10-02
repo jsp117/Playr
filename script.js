@@ -61,6 +61,7 @@ function music(x) {
         }
 
         for (var i = 0; i < 15; i++) {
+            // youtube links
             songLinks.push(sl1[i]);
             songNames.push(sn1[i]);
         }
@@ -78,6 +79,7 @@ function music(x) {
 
         if (sc1.length < 15) {
             for (var i = 0; i < sc1.length; i++) {
+                // final scoundcloud links 
                 sc.push(sc1[i]);
                 scNames.push(sc1Names[i]);
             }
@@ -163,9 +165,11 @@ function lyrics(x) {
         // console.log("Musixmatch response: ");
         // console.log(response.message.body.lyrics.lyrics_body);
         var lyrics = response.message.body.lyrics.lyrics_body;
-        $("#lyrics").text(lyrics);
+        var lyricEle = $("<p>");
+        lyricEle.text(lyrics);
+        lyricEle.attr("style", "margin-left: 60px; margin-top: 60px;");
+        $("#lyrics").append(lyricEle);
     });
-
 }
 
 function youtube() {
@@ -267,6 +271,9 @@ function soundcloud() {
 
 // plays souncloud song on click
 $("#player").on("click", "p", function() {
+    // reset lyrics
+    $("#lyrics").attr("style", "display: none");
+    $("#lyrics").empty();
     var scLink = this.id;
     $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 
@@ -393,6 +400,14 @@ $('#downButton').click(function() {
     }, 'slow');
     return false;
 });
+
+
+
+
+function savePlaylist() {
+
+
+}
 
 // youtube playlist for genre
 // function youtubePlaylist(){

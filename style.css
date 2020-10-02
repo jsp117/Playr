@@ -36,10 +36,6 @@ body {
     padding-top: 500px;
 }
 
-#aboutUsCon {
-    margin-top: 5px;
-}
-
 .vision {
     background-color: #a6a6a6;
     margin-left: 30px;
@@ -65,10 +61,6 @@ body {
     margin-left: 30px;
 }
 
-.infoBox {
-    opacity: 90%;
-}
-
 .musicPlaylist {
     background-color: #b3b3b3;
     margin-right: 30px;
@@ -86,24 +78,31 @@ body {
     opacity: 80%;
 }
 
-#playIcon {
-    height: 60px;
-    width: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-}
-
 .caption {
     text-align: center;
     margin-top: 15px;
 }
 
-.textDescription {
-    display: block;
-    margin-left: 80px;
-    margin-right: 30px;
-    text-align: center;
+
+/* CSS Styling for aboutUs.html */
+
+.brandStatement {
+    margin-top: 50px;
+}
+
+.infoBox {
+    opacity: 90%;
+    padding-bottom: 400px;
+    padding-top: 20px;
+}
+
+#aboutUsCon {
+    margin-top: 5px;
+}
+
+#musicImg {
+    width: 600px;
+    height: 800px;
 }
 
 #musicQuote {
@@ -114,16 +113,30 @@ body {
     font-size: 18px;
     background-color: #b3b3b3;
     margin-right: 30px;
+    margin-left: 30px;
 }
+
+#playIcon {
+    height: 60px;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.textDescription {
+    display: block;
+    margin-left: 80px;
+    margin-right: 30px;
+    text-align: center;
+}
+
+
+/* add class for JavaScript */
 
 .borderList {
     margin-top: 5px;
     border-bottom: 3px solid #e6e6e6;
     margin-left: 10px;
     display: block;
-}
-
-#musicImg {
-    width: 500px;
-    height: 600px;
 }
