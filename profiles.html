@@ -116,8 +116,8 @@
     </nav>
 
     <!-- Page Header on Creators and buttons to other pages -->
-    <div class="bg-gray-50">
-        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <div class="bg-gray-50 creatorsHeader">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:items-center justify-between">
             <h1 class="text-3xl leading-9 font-extrabold text-indigo-800 sm:text-4xl sm:leading-10 tracking-widest" id="playrTeam">CREATORS
                 <br>
                 <span class="text-indigo-300">Meet the team PLAYRs!</span>
@@ -136,10 +136,10 @@
     </div>
 
     <!-- Individual Profiles of Creators -->
-    <div class="flex grid grid-rows-3 grid-flow-col gap-4 mx-auto items-center content-center justify-center mt-20">
+    <div class="pb-48 flex grid grid-rows-3 grid-flow-col gap-4 mx-auto items-center content-center justify-center mt-20">
 
         <!-- Ivan Torres Profile -->
-        <div class="max-w-sm w-full lg:max-w-full lg:flex md:w-auto row-span-1 col-span-2 rounded-md">
+        <div class="mb-5 max-w-sm w-full lg:max-w-full lg:flex md:w-auto row-span-1 col-span-2 rounded-md">
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/Ivan\'s-Profile.jpg')" title="Ivan Torres">
             </div>
             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -160,16 +160,22 @@
                         <!-- <p class="text-gray-900 leading-none">Jonathan Reinink</p>
                         <p class="text-gray-600">Aug 18</p> -->
                         <p class="card-text">Check out Ivan's accounts:</p>
-                        <a href="https://github.com/IvanTorresMia" target="_blank">
-                            <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
-                        </a>
+                        <div class="row-span-1">
+                            <ul>
+                                <li>
+                                    <a href="https://github.com/IvanTorresMia" target="_blank">
+                                        <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Jerri Fong's Profile -->
-        <div class=" max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md ">
+        <div class="mb-5 max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md ">
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/jerri-manager.jpg')" title="Jerri Fong">
             </div>
             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -188,18 +194,28 @@
                         <!-- <p class="text-gray-900 leading-none ">Jonathan Reinink</p>
                         <p class="text-gray-600 ">Aug 18</p> -->
                         <p class="card-text">Check out Janessa's accounts:</p>
-                        <a href="https://github.com/janessaref" target="_blank">
-                            <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
-                            <a href="https://www.linkedin.com/in/janessafong/" target="_blank">
-                                <img src="assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
-                            </a>
+                        <div class="row-span-1">
+                            <ul>
+                                <li class="icons">
+                                    <a href="https://github.com/janessaref" target="_blank">
+
+                                        <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                                    </a>
+                                </li>
+                                <li class="icons">
+                                    <a href="https://www.linkedin.com/in/janessafong/" target="_blank">
+                                        <img src="assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Jon SanPedro's Profile -->
-        <div class="max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md ">
+        <div class="mb-5 max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md ">
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden " style="background-image: url('/img/card-left.jpg') " title="Jon SanPedro">
             </div>
             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal ">
@@ -214,15 +230,24 @@
                 </div>
                 <div class="flex items-center ">
                     <!-- <img class="w-10 h-10 rounded-full mr-4 " src="/img/jonathan.jpg " alt="Avatar of Jonathan Reinink "> -->
-                    <div class="text-sm ">
+                    <div class="text-sm">
                         <!-- <p class="text-gray-900 leading-none ">Jonathan Reinink</p>
                         <p class="text-gray-600 ">Aug 18</p> -->
                         <p class="card-text">Check out Jonathan's accounts:</p>
-                        <a href="https://github.com/jsp117" target="_blank">
-                            <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
-                            <a href="https://www.linkedin.com/in/jonathan-s-6ab32283/" target="_blank">
-                                <img src="assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
-                            </a>
+                        <div class="row-span-1">
+                            <ul>
+                                <li class="icons">
+                                    <a href="https://github.com/jsp117" target="_blank">
+                                        <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                                    </a>
+                                </li>
+                                <li class="icons">
+                                    <a href="https://www.linkedin.com/in/jonathan-s-6ab32283/" target="_blank">
+                                        <img src="assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

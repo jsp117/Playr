@@ -56,14 +56,6 @@ body {
     padding-top: 500px;
 }
 
-.vision {
-    background-color: #a6a6a6;
-    margin-left: 30px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .songLyrics {
     background-color: #a6a6a6;
     margin-left: 30px;
@@ -126,9 +118,38 @@ body {
     margin-top: 5px;
 }
 
+.musicImageBlock {
+    background-color: #a6a6a6;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 #musicImg {
     width: 610px;
     height: 860px;
+}
+
+@media (max-width:639px) {
+    img#musicImg {
+        display: none;
+    }
+    div.musicImageBlock {
+        display: none;
+    }
+}
+
+@media (max-width:1023px) {
+    img#musicImg {
+        height: 1080px;
+    }
+}
+
+@media (max-width:1279px) {
+    img#musicImg {
+        height: 1000px;
+    }
 }
 
 #musicQuote {
@@ -171,6 +192,16 @@ body {
 
 
 /* styling for Profiles Page */
+
+.creatorsHeader {
+    margin-top: 50px;
+}
+
+.icons {
+    display: inline;
+    list-style-type: none;
+    float: left;
+}
 
 
 /* add class for JavaScript */

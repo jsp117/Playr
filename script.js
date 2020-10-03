@@ -520,8 +520,21 @@ function musicOnError(e) {
 // adds song to player and checks for errors
 
 pageOpen();
+var youtubeCon = $(".youtubeVid")
 
+function renderYoutubeVids() {
+    for (i = 0; i < 9; i++) {
+        var current = parseInt(youtubeCon[i].getAttribute("value"));
+        var atag = $("<a>");
+        var img = $("<img>");
+        atag.attr("href", "https://www.youtube.com/embed/tPO9jxUKIsc")
+        img.attr("src", "assets/Ivans-drum.jpeg")
+        atag.append(img);
+        current.append(atag)
+    }
+}
 
+renderYoutubeVids();
 
 // widget.bind(SC.Widget.Events.FINISH, function (eventData) {
 //   iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x + 1] + "&auto_play=true)";
