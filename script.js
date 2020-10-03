@@ -16,12 +16,14 @@ var youtubeLinks = [];
 var song;
 var artist;
 var count = 0;
-
+// for test
+var scExtra = [];
+var scnExtra = [];
+var finalSound;
 
 // https://openwhyd.org/u/4d94501d1f78ac091dbc9b4d/playlist/10?format=links&limit=10000 - working to post 10000 links from adrians profile
 function music(x) {
   $.ajax({
-
     url: "https://cors-anywhere.herokuapp.com/https://openwhyd.org/hot/" + x + "?format=json&limit=1000",
     method: "GET",
     error: function (e) {
@@ -45,7 +47,7 @@ function music(x) {
         sc1.push(move);
         sc1Names.push(moveNames);
         // console.log(sc);
-        count++;
+
       }
     }
 
@@ -87,6 +89,21 @@ function music(x) {
         scNames.push(sc1Names[i]);
       }
     }
+    localStorage.setItem("c", count);
+      localStorage.setItem(count + " gnr", $("#musicInput").val());
+      localStorage.setItem(count + " ytl", songLinks);
+      localStorage.setItem(count + " ytn", songNames);
+      localStorage.setItem(count + " scl", sc);
+      localStorage.setItem(count + " scn", scNames);
+ 
+    console.log("count = " + count);
+
+    // to grab extra soundcloud songs - testing
+    // for (var i = 15; i<30; i++){
+    //   scExtra.push(sc1[i]);
+    //   scnExtra.push(sc1Names[i]);
+    // }
+
 
     // if there are youtube songs
     if (songLinks.length > 0) {
@@ -111,7 +128,7 @@ function music(x) {
 
       // hide soundcloud card
     }
-
+    count = count + 1;
   });
   // end music function
 }
@@ -177,7 +194,7 @@ function lyrics(x) {
     lyricEle.attr("style", "margin-left: 60px; margin-top: 60px;");
     $("#lyrics").append(lyricEle);
   });
-// end lyrics
+  // end lyrics
 }
 
 function youtube() {
@@ -208,7 +225,21 @@ function youtube() {
   // push stills of youtube videos to div on page - with working link to youtube - todo
   // end youtube
 }
+// grab extra soundcloud links to switch out broken links - testing
+// function extraSound(){
+//   var newSound = scExtra.map(function (i) {
+//     return i[0].split("https").pop();
+//   });
 
+//   // working to remove stream where it exists
+//   for (var i = 0; i < newSound.length; i++) {
+//     if (newSound[i].includes("/stream")) {
+//       finalSound[i] = newSound[i].slice(0, -7);
+//     } else {
+//       finalSound.push(newSound[i]);
+//     }
+//   }
+// }
 function soundcloud() {
   // returns second piece of split string
   // console.log("soundcloud links: " + sc);
@@ -216,16 +247,6 @@ function soundcloud() {
   newArray = sc.map(function (i) {
     return i[0].split("https").pop();
   });
-  // console.log("after first split: " + newArray);
-  // takes "stream" off end of each string in array
-
-  // removes stream but adds comma
-  // for (var i = 0; i < newArray.length; i++) {
-  //   finalArray.push(newArray[i].split("/stream"));
-  // }
-  // for (var i = 0; i < finalArray.length; i++) {
-  //   testArray.push(finalArray[i].split(","));
-  // }
 
   // working to remove stream where it exists
   for (var i = 0; i < newArray.length; i++) {
@@ -235,16 +256,11 @@ function soundcloud() {
       finalArray.push(newArray[i]);
     }
   }
-  // removes 7 characters regardless of stream existing at the end
-  // finalArray = newArray.map(function (n){
-  //   return n[0].split("/stream");
-  // });
+
   console.log("after split" + finalArray);
   // finalArray = newArray.map(x => x.slice(0, -7));
   // adds working soundcloud link to soundcloud player
-  $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0]);
-
-  console.log("ogbandNames");
+  $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[0] + "&auto_play");
   // grab soundcloud artist name
   bandNames = scNames.map(function (n) {
     if (n[0].includes(" - ")) {
@@ -292,29 +308,67 @@ function soundcloud() {
     artist = artist[0].split(",")[0];
   }
 
-
+  scAdd(0);
   lyricsFinder(song, artist);
+
   // soundcloud working embedded player link
   // https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/148670062
 }
+
+function scAdd(x) {
+  var iframe = document.querySelector('#music');
+  iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x] + "&auto_play=true)";
+  var widget = SC.Widget(iframe);
+  // play next song on finish
+  widget.bind(SC.Widget.Events.FINISH, function (eventData) {
+    iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
+  });
+  widget.bind(SC.Widget.Events.ERROR, function (eventData) {
+    iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
+    console.log(x);
+  });
+
+
+}
+
+
+
+
+// widget.bind(SC.Widget.Events.ERROR, function (eventData) {
+//   // console.log("before: " + finalArray);
+//   finalArray[x] = "broken link";
+//   scNames[x] = "broken link";
+//   // $("#" + x).remove();
+//   // alert('SONG NOT FOUND');
+//   if(finalArray[x] == "broken link"){
+//   iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x+1] + "&auto_play=true)";
+//   x++;
+// }
+//   console.log("after: " + finalArray);
+//   console.log("x: " , x);
+//   if (x > 15) {
+//     return;
+//   }
+// });
+
+// $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink] + &auto_play=true)";
+// }
 
 // plays song on click
 $("#player").on("click", "p", function () {
   $("#lyrics").attr("style", "display: none");
   $("#lyrics").empty();
   var scLink = this.id;
-  $("#music").attr("src", "https://w.soundcloud.com/player/?url=https" + finalArray[scLink]);
 
 
-
-  console.log("BEFORE songname: " + songNames[scLink] + " artist: " + bandNames[scLink]);
+  // console.log("BEFORE songname: " + songNames[scLink] + " artist: " + bandNames[scLink]);
   song = songNames[scLink];
   artist = bandNames[scLink];
 
   // removes excess characters from song/artist names
   if (song.includes("feat")) {
     song = song.split("feat")[0];
-    console.log("WORKING");
+    // console.log("WORKING");
   }
   if (song.includes("(")) {
     song = song.split("(")[0];
@@ -333,18 +387,9 @@ $("#player").on("click", "p", function () {
     artist = artist.split(",")[0];
   }
 
-
-  console.log("AFTER songname: " + song + " artist: " + artist);
   lyricsFinder(song, artist);
-
+  scAdd(scLink);
 });
-
-// $("#top").on("click", function () {
-//   $('html, body').animate({
-//     scrollTop: '0px'
-//   }, 2000);
-
-// });
 
 $("#musicInput").on("keydown", function (event) {
   // reset all arrays
@@ -430,20 +475,55 @@ $("#upButton").on("click", function () {
   });
 });
 
-$('#downButton').click(function() {
+$('#downButton').click(function () {
   $('html, body').animate({
-      scrollTop: 0
+    scrollTop: 0
   }, 'slow');
   return false;
 });
 
 
-function pageOpen(){
+function pageOpen() {
   $("HTML, BODY").animate({
     scrollTop: 0
   }, 1000);
+
+  // localstorage
+  var c = localStorage.getItem("c");
+  c = parseInt(c);
+  for (var i = 0; i < c; i++) {
+    var gnr = localStorage.getItem(count + " gnr");
+    var ytl = localStorage.getItem(count + " ytl");
+    var ytn = localStorage.getItem(count + " ytn");
+    var scl = localStorage.getItem(count + " scl");
+    var scn = localStorage.getItem(count + " scn");
+  }
+  if(isNaN(c)){
+  return;
+  }else{
+      count = c + 1; 
+      if(c > 0){
+      for(var i = 0; i < c; i ++){
+        var pl = $("<button>");
+        pl.text(gnr[i]);
+        $("#playlist").append(pl);
+        
+      }
+    }
+  }
 }
+
+function musicOnError(e) {
+  console.log("error" + e);
+}
+
+// adds song to player and checks for errors
 
 pageOpen();
 
 
+
+// widget.bind(SC.Widget.Events.FINISH, function (eventData) {
+//   iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x + 1] + "&auto_play=true)";
+
+// });
