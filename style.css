@@ -13,6 +13,7 @@ body {
     text-align: center;
     font-size: 50px;
     padding-top: 300px;
+    font-weight: bolder;
 }
 
 #musicInput {
@@ -27,12 +28,31 @@ body {
     height: 42px;
 }
 
-.maincard {
-    margin-top: 130px;
-    opacity: 85%
+#saveBtn {
+    float: right;
+    margin-right: 10px;
+    /* margin-top: 20px; */
+    margin-bottom: 0px;
 }
 
-#musicbox {
+#clearBtn {
+    /* float: right; */
+    margin-right: 20px;
+}
+
+#downButton {
+    margin-bottom: 100px;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    align-items: center;
+}
+
+.maincard {
+    margin-top: 130px;
+    opacity: 90%
+}
+
+#musicBox {
     padding-top: 500px;
 }
 
@@ -44,7 +64,7 @@ body {
     margin-bottom: 20px;
 }
 
-.searchHistory {
+.songLyrics {
     background-color: #a6a6a6;
     margin-left: 30px;
     margin-right: 20px;
@@ -54,17 +74,16 @@ body {
     padding-right: 100px;
 }
 
-.musicPlayer {
+.playlistBox {
+    padding-bottom: 50px;
+}
+
+.soundCloudPlaylist,
+.youTubePlaylist,
+.userSavePlaylists {
     background-color: #b3b3b3;
     margin-right: 30px;
     margin-top: 20px;
-    margin-left: 30px;
-}
-
-.musicPlaylist {
-    background-color: #b3b3b3;
-    margin-right: 30px;
-    margin-bottom: 20px;
     margin-left: 30px;
 }
 
@@ -81,6 +100,13 @@ body {
 .caption {
     text-align: center;
     margin-top: 15px;
+}
+
+#backToTop {
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 50px;
+    /* position: relative; */
 }
 
 
@@ -144,11 +170,15 @@ body {
 }
 
 
+/* styling for Profiles Page */
+
+
 /* add class for JavaScript */
 
 .borderList {
     margin-top: 5px;
     border-bottom: 3px solid #e6e6e6;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     display: block;
+    /* font-weight: bold; */
 }

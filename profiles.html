@@ -5,226 +5,237 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profiles</title>
+    <title>PLAYR: Profiles</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
-    <!-- AOS -->
+    <!-- AOS Stylesheet -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- Tailwind -->
-    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Tailwind CSS Stylesheet -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
     <!--Replace with your tailwind.css once created-->
-    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
     <!--Tailwind Custom Forms - use to standardise form fields - https://github.com/tailwindcss/custom-forms-->
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Philosopher&family=Pontano+Sans&family=Thasadith:ital,wght@0,400;0,700;1,400&family=Yeseva+One&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
     <link rel="stylesheet" href="./style.css">
 
 </head>
 
-<body class="leading-normal tracking-widest">
+<body class="leading-normal tracking-widest overflow-scroll">
 
-    <nav class="bg-gray-600 opacity-75">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div class="relative flex items-center justify-between h-16">
+    <!-- Starting Container -->
+    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0">
+        <div class="w-full m-w-screen-xl relative mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between px-4 h-16">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     <!-- Mobile menu button-->
-                    <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
-          <svg class="block h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <svg
-            class="hidden h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+                    <button @click="isOpen = !isOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
+                        aria-label="Main menu" x-bind:aria-expanded="open">
+          
+                  <!-- Icon when menu is closed -->
+                    <svg x-state:on="Menu open" x-state:off="Menu closed" :class="isOpen ? 'block' : 'hidden'" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path v-if="!isOpen" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+            
+                  <!-- Icon when menu is open -->
+                    <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path v-if="isOpen"  fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                  </button>
                 </div>
+
+                <!-- Website Logo -->
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex-shrink-0">
                         <!-- Replace this with out logo -->
                         <!-- <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo" />
-                    <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo" /> -->
+                      <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo" /> -->
                     </div>
-                    <div class="hidden sm:block sm:ml-6">
+
+                    <!-- Menu Links -->
+                    <div class="hidden sm:flex sm:ml-6 lg:xl-12">
                         <div class="flex">
-                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
-                            <a href="AboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
-                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a
-            >
-          </div>
-        </div>
-      </div>
-<div>
-<div class="flex items-center mt-1 relative rounded-md shadow-sm h-24">
-  <div class="absolute inset-y-0 flex text-center items-center pointer-events-none">
-</div>
+                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                            <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About Us</a>
+                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">Link to Our Profiles</a>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
-          <!-- Heroicon name: bell -->
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-            />
-          </svg>
-        </button>
+                <!-- Notifications Icon -->
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
+            <!-- Heroicon name: bell -->
+                <svg class="h-6 w-6" x-description="Heroicon name: bell" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round"  stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </button>
 
-        <!-- Profile dropdown -->
-        <div class="ml-3 relative">
-          <div>
-            <button
-              class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
-              id="user-menu"
-              aria-label="User menu"
-              aria-haspopup="true"
-            >
-              <img
-                class="h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-            </button>
+                    <!-- Profile dropdown -->
+                    <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                        <div>
+                            <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
+                        <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
+                      </button>
+                        </div>
+
+                        <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                            x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
+                            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                                <ul class="musicDropdown">
+                                    <li class="list-none" id="artist">
+                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
+                                    </li>
+                                    <li id="genre">
+                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
+                                    </li>
+                                    <li id="album">
+                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+        <!-- <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'block' : open, 'hidden': !open }" class="'hidden' sm:'hidden'">
+          <div :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-3 sm-flex">
+              <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+              <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+              <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
           </div>
+      </div> -->
+    </nav>
+
+    <!-- Page Header on Creators and buttons to other pages -->
+    <div class="bg-gray-50">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h1 class="text-3xl leading-9 font-extrabold text-indigo-800 sm:text-4xl sm:leading-10 tracking-widest" id="playrTeam">CREATORS
+                <br>
+                <span class="text-indigo-300">Meet the team PLAYRs!</span>
+            </h1>
+            <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="index.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">Listen to Music
+                </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="aboutUs.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">About PLAYR
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</nav>
-<!-- New Container -->
- 
 
+    <!-- Individual Profiles of Creators -->
+    <div class="flex grid grid-rows-3 grid-flow-col gap-4 mx-auto items-center content-center justify-center mt-20">
 
-    <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between mb-20">
-      <h2 class="text-3xl leading-9 font-extrabold text-indigo-800 sm:text-4xl sm:leading-10 tracking-widest"id="playrBrand">
-       Meet the creators!
-        <br>
-        <span class="text-indigo-300"></span>
-      </h2>
-      <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
-        <div class="inline-flex rounded-md shadow">
-          <a href="index.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-           Listen to Music
-          </a>
-                        </div>
-                        <div class="ml-3 inline-flex rounded-md shadow">
-                            <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-            Visit Creators Profiles
-          </a>
-                        </div>
+        <!-- Ivan Torres Profile -->
+        <div class="max-w-sm w-full lg:max-w-full lg:flex md:w-auto row-span-1 col-span-2 rounded-md">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/Ivan\'s-Profile.jpg')" title="Ivan Torres">
+            </div>
+            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        </svg>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2">Ivan Torres
+                    </div>
+                    <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    </p>
+                    <a href="https://ivantorresmia.github.io/IvanTorres-portfolio/">Link To Portfolio</a>
+                </div>
+                <div class="flex items-center">
+                    <!-- <img class="w-10 h-10 rounded-full mr-4" src="assets/Ivans-drum.jpg" alt="Ivan's Picture"> -->
+                    <div class="text-sm">
+                        <!-- <p class="text-gray-900 leading-none">Jonathan Reinink</p>
+                        <p class="text-gray-600">Aug 18</p> -->
+                        <p class="card-text">Check out Ivan's accounts:</p>
+                        <a href="https://github.com/IvanTorresMia" target="_blank">
+                            <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
 
-
-
-            <div class="grid grid-rows-3 grid-flow-col gap-4 ml-20 mt-20">
-
-                <div class="max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md">
-                    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/Ivan\'s-Profile.jpg')" title="Woman holding a mug">
-                    </div>
-                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8">
-                            <p class="text-sm text-gray-600 flex items-center">
-                                <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          </svg>
-                            </p>
-                            <div class="text-gray-900 font-bold text-xl mb-2">Ivan Torres</div>
-                            <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-                            <a href="https://ivantorresmia.github.io/IvanTorres-portfolio/">Link To Portfolio</a>
-                        </div>
-                        <div class="flex items-center">
-                            <!-- <img class="w-10 h-10 rounded-full mr-4" src="assets/Ivans-drum.jpg" alt="Ivan's Picture"> -->
-                            <div class="text-sm">
-                                <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-                                <p class="text-gray-600">Aug 18</p>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Jerri Fong's Profile -->
+        <div class=" max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md ">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/jerri-manager.jpg')" title="Jerri Fong">
+            </div>
+            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 20 20">
+                        </svg>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2">Janessa Fong</div>
+                    <p class="text-gray-700 text-base ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                    <a href="https://janessaref.github.io/my-portfolio/">Link To Portfolio</a>
                 </div>
-
-                <div class="max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md">
-                    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/jerri-manager.jpg')" title="Woman holding a mug">
-                    </div>
-                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8">
-                            <p class="text-sm text-gray-600 flex items-center">
-                                <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          </svg>
-                            </p>
-                            <div class="text-gray-900 font-bold text-xl mb-2">Jerri Fong</div>
-                            <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-                            <a href="https://ivantorresmia.github.io/IvanTorres-portfolio/">Link To Portfolio</a>
-                        </div>
-                        <div class="flex items-center">
-                            <!-- <img class="w-10 h-10 rounded-full mr-4" src="assets/jerri-manager.jpg" alt="Avatar of Jonathan Reinink"> -->
-                            <div class="text-sm">
-                                <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-                                <p class="text-gray-600">Aug 18</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md">
-                    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
-                    </div>
-                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div class="mb-8">
-                            <p class="text-sm text-gray-600 flex items-center">
-                                <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          </svg>
-                            </p>
-                            <div class="text-gray-900 font-bold text-xl mb-2">Jon's hot</div>
-                            <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-                            <a href="https://ivantorresmia.github.io/IvanTorres-portfolio/">Link To Portfolio</a>
-                        </div>
-                        <div class="flex items-center">
-                            <!-- <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink"> -->
-                            <div class="text-sm">
-                                <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-                                <p class="text-gray-600">Aug 18</p>
-                            </div>
-                        </div>
+                <div class="flex items-center">
+                    <!-- <img class="w-10 h-10 rounded-full mr-4 " src="assets/jerri-manager.jpg " alt="Avatar of Jonathan Reinink "> -->
+                    <div class="text-sm ">
+                        <!-- <p class="text-gray-900 leading-none ">Jonathan Reinink</p>
+                        <p class="text-gray-600 ">Aug 18</p> -->
+                        <p class="card-text">Check out Janessa's accounts:</p>
+                        <a href="https://github.com/janessaref" target="_blank">
+                            <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                            <a href="https://www.linkedin.com/in/janessafong/" target="_blank">
+                                <img src="assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                            </a>
                     </div>
                 </div>
             </div>
-            <!-- jQuery -->
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-            <script>
-                AOS.init();
-            </script>
-            <script src="script.js"></script>
+        </div>
+
+        <!-- Jon SanPedro's Profile -->
+        <div class="max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md ">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden " style="background-image: url('/img/card-left.jpg') " title="Jon SanPedro">
+            </div>
+            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal ">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 20 20">
+                        </svg>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2 ">Jonathan SanPedro</div>
+                    <p class="text-gray-700 text-base ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                    <a href="https://jsp117.github.io/Jon-SanPedro-Portfolio/">Link To Portfolio</a>
+                </div>
+                <div class="flex items-center ">
+                    <!-- <img class="w-10 h-10 rounded-full mr-4 " src="/img/jonathan.jpg " alt="Avatar of Jonathan Reinink "> -->
+                    <div class="text-sm ">
+                        <!-- <p class="text-gray-900 leading-none ">Jonathan Reinink</p>
+                        <p class="text-gray-600 ">Aug 18</p> -->
+                        <p class="card-text">Check out Jonathan's accounts:</p>
+                        <a href="https://github.com/jsp117" target="_blank">
+                            <img src="assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                            <a href="https://www.linkedin.com/in/jonathan-s-6ab32283/" target="_blank">
+                                <img src="assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js " integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=" anonymous "></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js "></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="script.js "></script>
 
 </body>
 
