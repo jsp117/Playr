@@ -322,11 +322,12 @@ function scAdd(x) {
   console.log("song playing: " + finalArray[x]);
   var widget = SC.Widget(iframe);
   // play next song on finish
-  widget.bind(SC.Widget.Events.FINISH, function (eventData) {
+  widget.bind(SC.Widget.Events.FINISH, function () {
     iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
   });
   widget.bind(SC.Widget.Events.ERROR, function (eventData) {
     if (x < 15) {
+      console.log(eventData);
       iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
       console.log(x);
       // push broken link to end of array - then delete it - set x<finalArray.length
@@ -508,7 +509,7 @@ $("#saveBtn").on("click", function () {
     // for(var i = 0; i < count + 1; i++){
     var playlist = $("<button>");
     playlist.text(localStorage.getItem(count + " gnr"));
-    playlist.attr("class", count);
+    playlist.attr("class", count).attr("style", "padding: 20px;");
     $("#savedPlaylists").append(playlist);
     // }
     count++;
@@ -543,7 +544,7 @@ function local() {
     for (var i = 0; i < c + 1; i++) {
       var playlist = $("<button>");
       playlist.text(localStorage.getItem(i + " gnr"));
-      playlist.attr("class", i);
+      playlist.attr("class", i).attr("style", "padding: 20px;");
       $("#savedPlaylists").append(playlist);
     }
   }
@@ -609,7 +610,17 @@ function pageOpen() {
 }
 pageOpen();
 local();
+// test auto play next song
+// (function(){
+//   var iframe = document.querySelector('#music');
+//    var widget = SC.Widget(iframe);
 
+//   widget.bind(SC.Widget.Events.FINISH, function() {
+//     iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
+ 
+//   });
+
+// }());
 
 // widget.bind(SC.Widget.Events.FINISH, function (eventData) {
 //   iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x + 1] + "&auto_play=true)";
