@@ -329,6 +329,7 @@ function scAdd(x) {
     if (x < 15) {
       iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
       console.log(x);
+      // push broken link to end of array - then delete it - set x<finalArray.length
     }
     else {
       return;
@@ -596,6 +597,8 @@ $("#savedPlaylists").on("click", "button", function () {
 
 $("#clearBtn").on("click", function () {
   localStorage.clear();
+  $("#savedPlaylists").empty();
+  count = 0;
 });
 
 // adds song to player and checks for errors
