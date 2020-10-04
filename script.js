@@ -501,7 +501,8 @@ $("#saveBtn").on("click", function () {
     localStorage.setItem(count + " scl", finalArray);
     localStorage.setItem(count + " scn", scNames);
 
-    count = count + 1;
+    // count = count + 1;
+    
 
   }
   local();
@@ -512,21 +513,20 @@ function local() {
   // localstorage
   var c = localStorage.getItem("c");
   c = parseInt(c);
-
+  console.log("c: ", c);
   for (var i = 0; i < c + 1; i++) {
-    gnr = localStorage.getItem(count + " gnr");
+    gnr = localStorage.getItem(i + " gnr");
+    ytl1 = localStorage.getItem(i + " ytl");
+    ytn1 = localStorage.getItem(i + " ytn");
+    scl1 = localStorage.getItem(i + " scl");
+    scn1 = localStorage.getItem(i + " scn");
   }
-
-  ytl1 = localStorage.getItem(count + " ytl");
-  ytn1 = localStorage.getItem(count + " ytn");
-  scl1 = localStorage.getItem(count + " scl");
-  scn1 = localStorage.getItem(count + " scn");
 
   console.log("saved genre: ", gnr);
   console.log("saved youtube links: ", ytl1);
   console.log("saved youtube names: ", ytn1);
   console.log("saved soundcloud links: ", scl1);
-  console.log("finalArray before add: " , scl1[0]);
+  console.log("finalArray before add: ", scl1[0]);
   console.log("saved soundcloud names: ", scn1);
 
   if (isNaN(c)) {
@@ -535,41 +535,60 @@ function local() {
     for (var i = 0; i < c + 1; i++) {
       var playlist = $("<button>");
       playlist.text(gnr);
-      playlist.attr("id", i + " genre");
+      playlist.attr("class", i);
       $("#savedPlaylists").append(playlist);
     }
   }
-  
+
+  count = c + 1;
+  console.log("count: " + count);
 }
 
 $("#savedPlaylists").on("click", "button", function () {
-  ytl = ytl1.split(",");
-  ytn = ytn1.split(",");
-  scl = scl1.split(",");
-  scn = scn1.split(",");
+  var show = this.className;
+  console.log(show);
+
+  gnr = localStorage.getItem(show + " gnr");
+
+  ytl1 = localStorage.getItem(show + " ytl");
+  ytn1 = localStorage.getItem(show + " ytn");
+  scl1 = localStorage.getItem(show + " scl");
+  scn1 = localStorage.getItem(show + " scn");
+
+
   console.log("saved genre as: ", gnr);
   console.log("saved youtube links as: ", ytl);
   console.log("saved youtube names as: ", ytn);
   console.log("saved soundcloud links as: ", scl);
   console.log("saved soundcloud names as: ", scn);
-  var show = this.id;
-  console.log(this.id);
+
+
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
 
 
+
+
+
+
+  ytl = ytl1.split(",");
+  ytn = ytn1.split(",");
+  scl = scl1.split(",");
+  scn = scn1.split(",");
   finalArray = scl;
   scNames = scn;
   songLinks = ytl;
   songNames = ytn;
+
+
 
   console.log("scNAmes on load: " + scNames);
   console.log("sc links on load: " + sc);
   youtube();
   soundcloud();
   scAdd(0);
-  
+
 
 });
 
