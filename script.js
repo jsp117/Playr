@@ -494,18 +494,25 @@ $('#downButton').click(function () {
 // save button
 $("#saveBtn").on("click", function () {
   if (go) {
+    
+    // $("#savedPlaylists").empty();
     localStorage.setItem("c", count);
     localStorage.setItem(count + " gnr", $("#musicInput").val());
     localStorage.setItem(count + " ytl", songLinks);
     localStorage.setItem(count + " ytn", songNames);
     localStorage.setItem(count + " scl", finalArray);
     localStorage.setItem(count + " scn", scNames);
-
+    var c = localStorage.getItem("c");
     // count = count + 1;
-    
-
+    // for(var i = 0; i < count + 1; i++){
+    var playlist = $("<button>");
+    playlist.text(localStorage.getItem(count + " gnr"));
+    playlist.attr("class", count);
+    $("#savedPlaylists").append(playlist);
+    // }
+    count++;
   }
-  local();
+  
 });
 
 
@@ -534,7 +541,7 @@ function local() {
   } else {
     for (var i = 0; i < c + 1; i++) {
       var playlist = $("<button>");
-      playlist.text(gnr);
+      playlist.text(localStorage.getItem(i + " gnr"));
       playlist.attr("class", i);
       $("#savedPlaylists").append(playlist);
     }
@@ -562,14 +569,9 @@ $("#savedPlaylists").on("click", "button", function () {
   console.log("saved soundcloud links as: ", scl);
   console.log("saved soundcloud names as: ", scn);
 
-
   $("#lyrics").empty();
   $("#player").empty();
   $("#youtube").empty();
-
-
-
-
 
 
   ytl = ytl1.split(",");
