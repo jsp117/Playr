@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # PLAYR
 
 
@@ -27,7 +26,7 @@ I am a full time Collage student who has a very busy schedule. Most of the time 
 * [openweathermap](https://openweathermap.org/)
 
 ## Deployed_Link
-
+![Playr](https://jsp117.github.io/Playr/)
 
 ## Features
 * Gif of my Website. 
@@ -83,7 +82,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-=======
-# Project-1
-
->>>>>>> 2e2a6c6a2b704b4e6d5dd5f77bea29d37fe0e9d7
