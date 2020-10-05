@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PLAYR: About Us</title>
+    <link rel="icon" href="assets/musicicon.png" type="image/png" sizes="16x16">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- Tailwind CSS Reset StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="public/build/style.css" />
+    <!-- AOS Stylesheet-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" type="text/css" />
+    <!-- Tailwind CSS Stylesheet -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Philosopher&family=Pontano+Sans&family=Thasadith:ital,wght@0,400;0,700;1,400&family=Yeseva+One&display=swap"
+        rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+</head>
+
+<body class="leading-normal tracking-widest overflow-scroll">
+
+    <!-- Starting Container -->
+    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0" x-data="{ open : false }">
+        <div class="w-full m-w-screen-xl relative mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between px-4 h-16">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
+                        aria-label="Main menu" x-bind:aria-expanded="open">
+            
+                    <!-- Icon when menu is closed -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open}" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                      </svg>
+              
+                    <!-- Icon when menu is open -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                </div>
+
+                <!-- Website Logo -->
+                <div class="flex-1 flex items-center -ml-8 justify-center sm:justify-start">
+                    <div class="flex-shrink-0">
+                        <!-- Replace this with out logo -->
+                        <img class="block lg:hidden w-auto h-8 object-left justify-start float-left" src="assets/PLAYdark.png" alt="Playr logo" id="playPNG" />
+                        <img class="hidden lg:block w-auto h-8 " src="assets/PLAYRdark.png" alt="Playr logo" id="playrLogo" />
+                    </div>
+
+                    <!-- Menu Links -->
+                    <div class="hidden sm:flex sm:ml-6 lg:xl-12 menuLinks">
+                        <div class="flex">
+                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                            <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About Us</a>
+                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">Link to Our Profiles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile dropdown -->
+                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                    <div>
+                        <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
+                              <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
+                            </button>
+                    </div>
+
+                    <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                        x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
+                        <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                            <ul class="musicDropdown">
+                                <li class="list-none" id="artist">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
+                                </li>
+                                <li id="genre">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
+                                </li>
+                                <li id="album">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapse Menu -->
+        <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class=" {'block' : open, 'hidden': !open }" class="hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3 sm-flex">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+                <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Playr brand and statement and buttons to other pages -->
+    <div class="bg-gray-50 brandStatement">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h1 class="text-3xl leading-9 font-extrabold text-indigo-800 sm:text-4xl sm:leading-10 tracking-widest" id="playrBrand">PLAYR
+                <br>
+                <span class="text-indigo-300">We bring music to the modern Generation</span>
+            </h1>
+            <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="index.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">Listen to Music</a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="profiles.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">Visit Creators Profiles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Card -->
+    <div class="container mx-auto infoBox">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 opacity-65" id="aboutUsCon" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h2 class="text-3xl mt-3 mb-3 leading-6 font-medium text-black-900 font-extrabold">Our Story</h2>
+            </div>
+
+            <!-- Content inside card -->
+            <div>
+                <div class="grid grid-rows-3 grid-flow-col gap-4 mb-5 mt-5 w-auto h-auto">
+                    <!-- Image -->
+                    <div class="row-span-3 col-span-2 musicImageBlock w-full items-center w-auto h-auto sm:hidden md:block l: block xl:block" data-aos="flip-left" data-aos-duration="3000">
+                        <img src="assets/about-us-assets/music.jpg" alt="music photo" id="musicImg">
+                    </div>
+                    <!-- Music quote -->
+                    <div class="row-span-1 col-span-1 font-semibold p-8 w-auto" id="musicQuote" data-aos="flip-right" data-aos-duration="3000">
+                        <h3>"Music speaks when we can't, changes the way we feel, zones out all the noise, taking us into another world so surreal."</h3>
+                    </div>
+                    <!-- What we do -->
+                    <div class="row-span-2 col-span-1 w-auto" id="whatWeDo" data-aos="flip-down" data-aos-duration="3000">
+                        <img src="assets/about-us-assets/play.png" alt="play icon" id="playIcon" />
+                        <h3 class="caption">Press Play</h3>
+                        <p class="textDescription font-medium">Drown yourself into the playlists we create for you and we'll set the mood.</p>
+                        <img src="assets/about-us-assets/pauseicon.png" alt="pause icon" id="pauseIcon" />
+                        <h3 class="caption">Press Pause</h3>
+                        <p class="textDescription font-medium">Take a break, relax with us and enjoy the unique sound.</p>
+                        <img src="assets/about-us-assets/shuffle.png" alt="shuffle icon" id="shuffleIcon" />
+                        <h3 class="caption">Press Shuffle</h3>
+                        <p class="textDescription font-medium">Whatever the mood, shuffle into the genres we have for you.</p>
+                        <img src="assets/about-us-assets/forward.png" alt="fast forward icon" id="forwardIcon" />
+                        <h3 class="caption">Press Fast Forward</h3>
+                        <p class="textDescription font-medium">Join us moving forward as we create an ethereal experience for you.</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer otherPages">
+        <p class="mx-auto w-auto pt-2">&#169; Copyright 2020 Fong, SanPedro & Torres</p>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Tailwind js Style -->
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2/highlight.pack.min.js,npm/axios@0.19.2/dist/axios.min.js,npm/dlv@1.1.3/dist/dlv.umd.min.js,gh/alpinejs/alpine@v2.2.1/dist/alpine.js,npm/fuse.js@5.0.9-beta/dist/fuse.min.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PLAYR: Profiles</title>
+    <link rel="icon" href="assets/musicicon.png" type="image/png" sizes="16x16">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- Tailwind CSS Reset StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="public/build/style.css" />
+    <!-- AOS Stylesheet -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Tailwind CSS Stylesheet -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Philosopher&family=Pontano+Sans&family=Thasadith:ital,wght@0,400;0,700;1,400&family=Yeseva+One&display=swap"
+        rel="stylesheet" />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body class="leading-normal tracking-widest overflow-scroll">
+
+    <!-- Starting Container -->
+    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0" x-data="{ open : false }">
+        <div class="w-full m-w-screen-xl relative mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between px-4 h-16">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
+                        aria-label="Main menu" x-bind:aria-expanded="open">
+            
+                    <!-- Icon when menu is closed -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open}" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                      </svg>
+              
+                    <!-- Icon when menu is open -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                </div>
+
+                <!-- Website Logo -->
+                <div class="flex-1 flex items-center -ml-8 justify-center sm:justify-start">
+                    <div class="flex-shrink-0">
+                        <!-- Replace this with out logo -->
+                        <img class="block lg:hidden w-auto h-8 object-left justify-start float-left" src="assets/PLAYdark.png" alt="Playr logo" id="playPNG" />
+                        <img class="hidden lg:block w-auto h-8 " src="assets/PLAYRdark.png" alt="Playr logo" id="playrLogo" />
+                    </div>
+
+                    <!-- Menu Links -->
+                    <div class="hidden sm:flex sm:ml-6 lg:xl-12 menuLinks">
+                        <div class="flex">
+                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                            <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About Us</a>
+                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">Link to Our Profiles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile dropdown -->
+                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                    <div>
+                        <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
+                          <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
+                        </button>
+                    </div>
+
+                    <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                        x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
+                        <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                            <ul class="musicDropdown">
+                                <li class="list-none" id="artist">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
+                                </li>
+                                <li id="genre">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
+                                </li>
+                                <li id="album">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapse Menu -->
+        <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class=" {'block' : open, 'hidden': !open }" class="hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3 sm-flex">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+                <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header on Creators and buttons to other pages -->
+    <div class="bg-gray-50 creatorsHeader">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:items-center justify-between">
+            <h1 class="text-3xl leading-9 font-extrabold text-indigo-800 sm:text-4xl sm:leading-10 tracking-widest" id="playrTeam">CREATORS
+                <br>
+                <span class="text-indigo-300">Meet the team PLAYRs!</span>
+            </h1>
+            <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="index.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">Listen to Music
+                </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="aboutUs.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">About PLAYR
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Individual Profiles of Creators -->
+    <div class="pb-48 flex grid grid-rows-3 grid-flow-col gap-4 mx-auto items-center content-center justify-center mt-20">
+
+        <!-- Ivan Torres Profile -->
+        <div style="margin-right: 120px; margin-left: 120px;" class="mb-10 max-w-sm w-full lg:max-w-full lg:flex md:w-auto row-span-1 col-span-2 rounded-md" data-aos="zoom-in-left" data-aos-duration="3000">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/profiles-assets/Ivan_s-Profile.jpg')" title="Ivan Torres">
+            </div>
+            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        </svg>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2">Ivan Torres
+                    </div>
+                    <p class="text-gray-700 text-base">Hi I am Ivan, I am midwest boy through and though but living in sunny California. Currently I am an aspiring full stack developer, but in my very little free time I am shredding, drums, falling on a skateboard, and hanging out with
+                        friends. At a young age I was always a very curious person who loved to learn new things.
+                    </p>
+                    <a href="https://ivantorresmia.github.io/IvanTorres-portfolio/">Link To Portfolio</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="text-sm">
+                        <p class="card-text">Check out Ivan's accounts:</p>
+                        <div class="row-span-1">
+                            <ul>
+                                <li class="icons">
+                                    <a href="https://github.com/IvanTorresMia" target="_blank">
+                                        <img src="assets/profiles-assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                                    </a>
+                                </li>
+                                <li class="icons">
+                                    <a href="www.linkedin.com/in/ivan-torres-0828931b2/" target="_blank">
+                                        <img src="assets/profiles-assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jerri Fong's Profile -->
+        <div style="margin-right: 120px; margin-left: 120px;" class="mb-10 max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md" data-aos="zoom-in-right" data-aos-duration="3000">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/profiles-assets/jerrifong.JPG')" title="Jerri Fong">
+            </div>
+            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 20 20">
+                        </svg>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2">Janessa Fong</div>
+                    <p class="text-gray-700 text-base ">I am Janessa Fong, one of the creators of PLAYR and currently a full-time coding bootcamp student at UC Berkley. I love music which is why we decided to create this application that also supports independent artists. I grew up in Metro
+                        Manila, Philippines and currently living in San Francisco, California. I have a bachelor’s degree in management of financial institutions and take pride to be a part of the official dance organization of the university known as
+                        the La Salle Dance Company - Street as well as taking leadership roles as the division manager for finance and the division manager for marketing.</p>
+                    <a href="https://janessaref.github.io/my-portfolio/">Link To Portfolio</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="text-sm ">
+                        <p class="card-text">Check out Janessa's accounts:</p>
+                        <div class="row-span-1">
+                            <ul>
+                                <li class="icons">
+                                    <a href="https://github.com/janessaref" target="_blank">
+
+                                        <img src="assets/profiles-assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                                    </a>
+                                </li>
+                                <li class="icons">
+                                    <a href="https://www.linkedin.com/in/janessafong/" target="_blank">
+                                        <img src="assets/profiles-assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jon SanPedro's Profile -->
+        <div class=" max-w-sm w-full lg:max-w-full lg:flex row-span-1 col-span-2 rounded-md" data-aos="zoom-in-left" data-aos-duration="3000">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden " style="background-image: url('assets/profiles-assets/pic.JPG') " title="Jon SanPedro">
+            </div>
+            <div style="margin-right: 120px;" class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal ">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 20 20">
+                        </svg>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2 ">Jonathan SanPedro</div>
+                    <p class="text-gray-700 text-base ">Hello! I'm Jonathan SanPedro and I am a student at the Berkeley Coding Academy. I graduated from Rutgers University in 2014 with a bachelors in Information Technology and Informatics. Since then, I've been working as an IT technician
+                        in multiple states. I recently moved to San Francisco and began teaching myself little bits of javascript and wanted to grow my skills further. I hope to gain the skills to become a developer and choose whatever career path I want!</p>
+                    <a href="https://jsp117.github.io/Jon-SanPedro-Portfolio/">Link To Portfolio</a>
+                </div>
+                <div class="flex items-center ">
+                    <div class="text-sm">
+                        <p class="card-text">Check out Jonathan's accounts:</p>
+                        <div class="row-span-1">
+                            <ul>
+                                <li class="icons">
+                                    <a href="https://github.com/jsp117" target="_blank">
+                                        <img src="assets/profiles-assets/GitHub-Mark-32px.png" style="height:34px" class="mr-2 mt-2" alt="github icon" />
+                                    </a>
+                                </li>
+                                <li class="icons">
+                                    <a href="https://www.linkedin.com/in/jonathan-s-6ab32283/" target="_blank">
+                                        <img src="assets/profiles-assets/In-Black-34px-R.png" style="height:34px" class="mr-2 mt-2" alt="linkedin icon" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer otherPages">
+        <p class="mx-auto w-auto pt-2">&#169; Copyright 2020 Fong, SanPedro & Torres</p>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js " integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=" anonymous "></script>
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js "></script>
+    <!-- Tailwind js Style -->
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2/highlight.pack.min.js,npm/axios@0.19.2/dist/axios.min.js,npm/dlv@1.1.3/dist/dlv.umd.min.js,gh/alpinejs/alpine@v2.2.1/dist/alpine.js,npm/fuse.js@5.0.9-beta/dist/fuse.min.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="script.js "></script>
+
+</body>
+
+</html>
