@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PLAYR</title>
+    <link rel="icon" href="assets/musicicon.png" type="image/png" sizes="16x16">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
 
     <!-- Tailwind CSS Reset StyleSheet -->
     <link rel="stylesheet" type="text/css" href="public/build/style.css" />
-    <!-- Font Awesome if you need it -->
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
     <!-- AOS Stylesheet -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <!-- Tailwind CSS Stylesheet -->
@@ -24,119 +23,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Philosopher&family=Pontano+Sans&family=Thasadith:ital,wght@0,400;0,700;1,400&family=Yeseva+One&display=swap"
         rel="stylesheet" />
     <link href="style.css" type="text/css" rel="stylesheet" />
-    <!--Tailwind Custom Forms - use to standardise form fields - https://github.com/tailwindcss/custom-forms-->
+
 </head>
 
 <body class="leading-normal tracking-widest">
 
     <!-- Starting Container -->
-    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0">
+    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0" x-data="{ open : false }">
         <div class="w-full m-w-screen-xl relative mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between px-4 h-16">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden collapseMenu">
                     <!-- Mobile menu button-->
-                    <button @click="isOpen = !isOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
+                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
                         aria-label="Main menu" x-bind:aria-expanded="open">
             
                     <!-- Icon when menu is closed -->
-                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="isOpen ? 'block' : 'hidden'" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path v-if="!isOpen" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open}" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                       </svg>
               
                     <!-- Icon when menu is open -->
                       <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path v-if="isOpen"  fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                       </svg>
                     </button>
                 </div>
 
                 <!-- Website Logo -->
-                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-1 flex items-center -ml-8 justify-center sm:justify-start">
                     <div class="flex-shrink-0">
                         <!-- Replace this with out logo -->
-                        <!-- <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo" />
-                        <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo" /> -->
+                        <img class="block lg:hidden w-auto h-8 object-left justify-start float-left" src="assets/PLAYdark.png" alt="Playr logo" id="playPNG" />
+                        <img class="hidden lg:block w-auto h-8 " src="assets/PLAYRdark.png" alt="Playr logo" id="playrLogo" />
                     </div>
 
                     <!-- Menu Links -->
-                    <div class="hidden sm:flex sm:ml-6 lg:xl-12">
+                    <div class="hidden sm:flex sm:ml-6 lg:xl-12 menuLinks">
                         <div class="flex">
                             <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
                             <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About Us</a>
-                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">Link to Our Profiles</a>
+                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2 mr-10 pr-5">Link to Our Profiles</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Music Input -->
-                <div class="flex flex-grow min-w-0 relative sm:w-3/4 md:w-4/5 lg:w-6/12 xl:w-6/12 justify-center items-center">
+                <div class="flex flex-grow min-w-0 static items-center">
                     <div class="w-full min-w-0 lg:px-6 xl:w-3/4 xl:px-12">
                         <div class="relative">
-                            <div class="flex items-center mt-1 rounded-md shadow-sm h-24 w-12 py-2 pr-4 pl-40 block w-full transition duration-150 ease-in-out">
-                                <input id="musicInput" class="form-input block w-full border border-transparent rounded-lg focus:outline-none text-left sm:text-sm sm:leading-5" placeholder="Search Music" type="search">
-                                <!-- <div class="absolute inset-y-0 flex inset-y-0 pl-4 items-center pointer-events-none">
-
-                                    <svg class="fill-current pointer-events-none text-gray-600 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                      <path d="M12.9 14.32a8 8 0 1 1 1.41-1.4115.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
-                                    </svg>
-                                </div> -->
+                            <div class="flex items-center mt-1 rounded-md shadow-sm h-24 w-64 py-2 block w-full transition duration-150 ease-in-out ml-12">
+                                <input id="musicInput" class="form-input block w-auto border border-transparent rounded-lg focus:outline-none text-left sm:text-sm sm:leading-5" placeholder="Search Music" type="search">
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Notifications Icon -->
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
-              <!-- Heroicon name: bell -->
-                  <svg class="h-6 w-6" x-description="Heroicon name: bell" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round"  stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                  </svg>
-                </button>
 
-                    <!-- Profile dropdown -->
-                    <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
-                        <div>
-                            <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
+                <!-- Profile dropdown -->
+                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                    <div>
+                        <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
                           <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
                         </button>
-                        </div>
+                    </div>
 
-                        <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
-                            x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
-                            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                                <ul class="musicDropdown">
-                                    <li class="list-none" id="artist">
-                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
-                                    </li>
-                                    <li id="genre">
-                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
-                                    </li>
-                                    <li id="album">
-                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                        x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
+                        <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                            <ul class="musicDropdown">
+                                <li class="list-none" id="artist">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
+                                </li>
+                                <li id="genre">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
+                                </li>
+                                <li id="album">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <!-- <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'block' : open, 'hidden': !open }" class="'hidden' sm:'hidden'">
-            <div :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-3 sm-flex">
+        <!-- Collapse Menu -->
+        <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class=" {'block' : open, 'hidden': !open }" class="hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3 sm-flex">
                 <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
                 <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
                 <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
             </div>
-        </div> -->
+        </div>
     </nav>
 
     <!-- Main Card -->
     <div class="container mx-auto">
-        <div class="row" style="height: 1000px" id="brandName">PLAYR
+        <div class="row" style="height: 1000px" id="brandName"><img src="assets/PLAYRblk.png" alt="playr logo" style="height:60px; width:200px" class="items-center mx-auto" />
             <div class="row col-span-1 items-center mx-auto my-auto justify-center">
-                <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4" id="downButton">
+                <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 mt-10" id="downButton">
                   <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                   </svg>
@@ -149,18 +133,20 @@
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 maincard relative" data-aos="flip-up" data-aos-duration="3000">
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                 <div class="text-lg leading-6 font-medium text-black-900">
+                    <!-- Append YouTube and SoundCloud Video Players -->
                     <div class="row">
                         <div class="flex mb-4">
                             <iframe class="static" id="youtubePly" width="45%" style="height:320px" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
+                            </iframe>
                             <iframe class="static ml-18" id="music" width="55%" style="height:fit-content" scrolling="no" frameborder="no" allow="autoplay" src="">
                         </iframe>
                         </div>
+                        <!-- Save Button Playlist -->
                         <div class="row pb-8">
                             <button type="submit" class="group relative flex content-right justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-700 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out right-0 bottom-0"
                                 id="saveBtn">Save Playlist
                             </button>
-
+                            <!-- Clear Button Playlist -->
                             <button type="submit" class="group relative flex content-right justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out right-20 bottom-0"
                                 id="clearBtn">Clear Playlist
                             </button>
@@ -169,96 +155,106 @@
                 </div>
             </div>
 
-            <!-- Album cover containers -->
+            <!-- Playlist Container -->
             <div>
-                <!-- <div class="mt-0">
-                    <button type="submit" class="group relative flex content-right justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-                        id="saveBtn">Save Playlist
-                </button>
-                </div> -->
                 <div class="row">
                     <div class="grid grid-rows-3 grid-flow-col gap-4 playlistBox">
-                        <div id="lyrics" class="row-span-5 songLyrics"></div>
+                        <div id="lyrics" class="row-span-4 songLyrics"></div>
                         <div id="player" class="row-span-1 col-span-2 overscroll-auto overflow-auto h-43 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg: max-h-sm soundCloudPlaylist">
                         </div>
                         <div id="youtube" class="row-span-1 col-span-2 overscroll-auto overflow-auto h-56 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg: max-h-sm youTubePlaylist">
                         </div>
-                        <div id="savedPlaylists" class="row-span-1 col-span-2 overscroll-auto overflow-auto h-30 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg: max-h-sm userSavePlaylists">
+                        <div id="savedPlaylists" class="row-span-1 col-span-2 overscroll-auto overflow-auto h-28 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg: max-h-sm userSavePlaylists">
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Scroll Up Button -->
+            <div class="row-span-2">
+                <div class="col-span-1 items-center mx-auto my-auto justify-center">
+                    <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-md focus:border-indigo-800 hover:border-indigo-400 transition transform rotate-180 float-right duration-150 ease-in-out" id="UpButtonMainCard">
+                      <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                      </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scroll Down Button -->
+            <div class="row-span-2">
+                <div class="col-span-1 items-center mt-0 my-20 justify-center">
+                    <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-md focus:border-indigo-800 hover:border-indigo-400 transition float-right duration-150 ease-in-out" id="downButtonMainCard">
+                        <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                      </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Card displays Album Covers Left Side -->
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-20 opacity-75 float-left mb-40 albumCover" data-aos="fade-right" data-aos-duration="3000">
+
+        <!-- Card displays Album Covers  -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg float-center mt-20 justify-center items-center opacity-75 mb-40 albumCover" data-aos="fade-down" data-aos-duration="3000">
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-black-900">
-                    PLAYR
+                <h3 class="text-lg leading-12 font-medium text-black-900">
+                    YOUTUBE ALBUM COVERS
                 </h3>
             </div>
 
-            <!-- Album Covers from 1 to 9 (YoutTube) -->
-            <div class="h-64 grid grid-rows-3 grid-flow-col gap-4 p-3" id="ytGrid">
-                <div class="grid block gap-4 bg-gray-500 text-center">1</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">2</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">3</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">4</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">5</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">6</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">7</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">8</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">9</div>
-            </div>
-        </div>
-
-        <!-- Card displays Album Covers Right Side -->
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-20 ml-5 opacity-75 float-left mb-40 albumCover" data-aos="fade-left" data-aos-duration="3000">
-            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-black-900">
-                    PLAYR
-                </h3>
-            </div>
-
-            <!-- Album Covers from 1 to 9 (SoundCloud) -->
-            <div class="h-64 grid grid-rows-3 grid-flow-col gap-4 p-3" id="scGrid">
-                <div class="grid block gap-4 bg-gray-500 text-center">1</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">2</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">3</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">4</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">5</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">6</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">7</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">8</div>
-                <div class="grid block gap-4 bg-gray-500 text-center">9</div>
+            <!-- Album Covers from 1 to 15 (YoutTube) -->
+            <div class="flex-wrap h-64 grid grid-rows-3 grid-flow-col sm:w-auto inline-block md:w-auto l:w-auto xl:w-auto float-center px-auto grid-cols-5 col-span-5 mx-auto gap-5 mb-10 mt-10 p-3 w-auto h-auto flex md:flex-shrink-0" id="ytGrid">
+                <div id="0you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="1you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="2you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="3you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="4you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="5you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="6you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="7you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="8you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="9you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="10you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="11you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="12you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="13you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
+                <div id="14you" class="grid block flex gap-5 bg-gray-500 w-auto h-auto youtubeVId"></div>
             </div>
         </div>
 
         <!-- Up Arrow Button -->
-        <div class="row col-span-1">
-            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow transform rotate-180 float-right mb-40 pb-30" id="upButton">
-            <svg class="animate-bounce w-6 h-6 text-gray-900 transform rotate-180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </button>
+        <div class="row span-2">
+            <div class="col-span-1">
+                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow transform rotate-180 float-right mb-32 pb-30" id="upButton">
+                    <svg class="animate-bounce w-6 h-6 text-gray-900 transform rotate-180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+            </button>
+            </div>
         </div>
-        <div class="row col-span-1">
-            <p class="float-right items-end content-right right-0 bottom-0 text-white" id="backToTop">Back to Top</p>
+        <div class="row-span-2">
+            <div class="col-span-1">
+                <p class="float-right items-end content-right mr-0 ml-32 right-0 bottom-0 text-white" id="backToTop">Back to Top</p>
+            </div>
         </div>
     </div>
 
+    <footer class="footer">
+        <p class="xl:ml-64 sm:mx-auto w-auto pt-2">&#169; Copyright 2020 Fong, SanPedro & Torres</p>
+    </footer>
 
+    <!-- Lytics Script -->
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- tailwind js styl -->
+    <!-- Tailwind js Style -->
     <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2/highlight.pack.min.js,npm/axios@0.19.2/dist/axios.min.js,npm/dlv@1.1.3/dist/dlv.umd.min.js,gh/alpinejs/alpine@v2.2.1/dist/alpine.js,npm/fuse.js@5.0.9-beta/dist/fuse.min.js"></script>
-    <script src="/js/app.js?id=b4b05d28e9cc2aa52134"></script>
-    <script src="/js/prism.js?id=15deb4e2ec03d399dcb3"></script>
-    <!-- end of stle css -->
     <script>
         AOS.init();
     </script>
+    <!-- end of style script css -->
     <script>
         var SC = SC || {};
         SC.Widget = function(n) {
