@@ -45,6 +45,7 @@ function music(x) {
         for (var i = 0; i < response.tracks.length; i++) {
             sl1.push(response.tracks[i].eId);
             sn1.push(response.tracks[i].name);
+            youTubeImages.push(response.tracks[i].img)
         }
         // splits soundcloud and youtube links/artists
         for (var i = 0; i < sl1.length; i++) {
@@ -507,8 +508,8 @@ $("#saveBtn").on("click", function() {
         // for(var i = 0; i < count + 1; i++){
         var playlist = $("<button>");
         playlist.text(localStorage.getItem(count + " gnr"));
-        playlist.attr("class", count).attr("style", "padding: 20px; margin: 20px;");
-        playlist.attr("class", "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full");
+        playlist.attr("value", count).attr("style", "padding: 20px; margin: 20px;");
+        playlist.attr("class", " bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full");
         $("#savedPlaylists").append(playlist);
         // }
         count++;
@@ -530,6 +531,7 @@ function local() {
         scn1 = localStorage.getItem(i + " scn");
     }
 
+
     console.log("saved genre: ", gnr);
     console.log("saved youtube links: ", ytl1);
     console.log("saved youtube names: ", ytn1);
@@ -543,18 +545,17 @@ function local() {
         for (var i = 0; i < c + 1; i++) {
             var playlist = $("<button>");
             playlist.text(localStorage.getItem(i + " gnr"));
-            playlist.attr("class", i).attr("style", "padding: 20px; margin: 20px;");
-            playlist.attr("class", "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full");
+            playlist.attr("value", i).attr("style", "padding: 20px; margin: 20px;");
+            playlist.attr("class", " bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full");
             $("#savedPlaylists").append(playlist);
         }
     }
-
     count = c + 1;
     console.log("count: " + count);
 }
 
 $("#savedPlaylists").on("click", "button", function() {
-    var show = this.className;
+    var show = this.value;
     console.log(show);
 
     gnr = localStorage.getItem(show + " gnr");
@@ -574,7 +575,7 @@ $("#savedPlaylists").on("click", "button", function() {
     $("#lyrics").empty();
     $("#player").empty();
     $("#youtube").empty();
-
+    console.log("youtube links before split: ", ytl);
 
     ytl = ytl1.split(",");
     ytn = ytn1.split(",");
@@ -586,7 +587,8 @@ $("#savedPlaylists").on("click", "button", function() {
     songNames = ytn;
 
 
-
+    genre = gnr;
+    youtubePlay(genre);
     console.log("scNAmes on load: " + scNames);
     console.log("sc links on load: " + sc);
     youtube();
