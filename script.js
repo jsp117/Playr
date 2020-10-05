@@ -205,7 +205,6 @@ function lyricsFinder(x, y) {
             }
         }
     });
-    // end lyrics finder
 }
 
 // grabs song lyrics
@@ -236,9 +235,7 @@ function lyrics(x) {
 function youtube() {
     // for each item in songLinks - take 4 characters from the front of each item - provides youtube links
     remove4 = songLinks.map(s => s.slice(4));
-
     youtubeLinks = [];
-
     // $("#youtube").attr("src", "http://www.youtube.com/watch?v=" + remove4[0]);
 
     for (var i = 0; i < songLinks.length; i++) {
@@ -271,10 +268,7 @@ function youtube() {
         atag.append(imgtag);
         newDIV.append(atag);
         $("#" + i + "you").append(newDIV);
-
     }
-
-    // end youtube
 }
 
 function soundcloud() {
@@ -411,7 +405,6 @@ $("#musicInput").on("keydown", function(event) {
     songLinks.length = 0;
     songNames.length = 0;
 
-
     if (event.keyCode == 13) {
         $("#saveBtn").attr("style", "display: inline-block");
         go = true;
@@ -496,6 +489,7 @@ $("#saveBtn").on("click", function() {
         localStorage.setItem(count + " scf", scNames);
         localStorage.setItem(count + " scn", sNames);
         localStorage.setItem(count + " scb", bandNames);
+        localStorage.setItem(count + " yti", youTubeImages);
         var c = localStorage.getItem("c");
         // count = count + 1;
         // for(var i = 0; i < count + 1; i++){
@@ -510,7 +504,6 @@ $("#saveBtn").on("click", function() {
 
 });
 
-
 function local() {
     // localstorage
     var c = localStorage.getItem("c");
@@ -524,14 +517,9 @@ function local() {
         scf1 = localStorage.getItem(i + " scf");
         scn1 = localStorage.getItem(i + " scn");
         scb1 = localStorage.getItem(i + " scb");
+        yti1 = localStorage.getItem(i + " yti");
     }
     console.log("scn1: ", scn1);
-    // console.log("saved genre: ", gnr);
-    // console.log("saved youtube links: ", ytl1);
-    // console.log("saved youtube names: ", ytn1);
-    // console.log("saved soundcloud links: ", scl1);
-    // console.log("finalArray before add: ", scl1[0]);
-    // console.log("saved soundcloud names: ", scn1);
 
     if (isNaN(c)) {
         return;
@@ -549,6 +537,8 @@ function local() {
 }
 
 $("#savedPlaylists").on("click", "button", function() {
+    youTubeImages.length = 0;
+    $(".youtubeVId").empty();
     $("body").attr("style", "overflow: visible;");
     $("#player").attr("style", "display: inline-block");
     $("#youtube").attr("style", "display: inline-block");
@@ -564,6 +554,7 @@ $("#savedPlaylists").on("click", "button", function() {
     scf1 = localStorage.getItem(show + " scf");
     scn1 = localStorage.getItem(show + " scn");
     scb1 = localStorage.getItem(show + " scb");
+    yti1 = localStorage.getItem(show + " yti");
 
     console.log("saved genre as: ", gnr);
     console.log("saved youtube links as: ", ytl);
@@ -582,6 +573,7 @@ $("#savedPlaylists").on("click", "button", function() {
     scf = scf1.split(",");
     scn = scn1.split(",");
     scb = scb1.split(",");
+    yti = yti1.split(",");
     console.log("scn: ", scn);
 
     finalArray = scl;
@@ -590,15 +582,13 @@ $("#savedPlaylists").on("click", "button", function() {
     songLinks = ytl;
     songNames = ytn;
     scNames = scf;
-
+    youTubeImages = yti;
 
     genre = gnr;
     youtubePlay(genre);
     youtube();
     soundcloud();
     scAdd(0);
-
-
 });
 
 $("#clearBtn").on("click", function() {
@@ -620,12 +610,8 @@ function pageOpen() {
 
 }
 
-
 pageOpen();
 local();
-
-
-
 
 $("#downButtonMainCard").on("click", function() {
     $([document.documentElement, document.body]).animate({
