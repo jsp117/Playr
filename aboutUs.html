@@ -10,7 +10,9 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-
+    <!-- Tailwind CSS Reset StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="public/build/style.css" />
+    <!-- Font Awesome if you need it -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" type="text/css" />
     <!-- AOS Stylesheet-->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" type="text/css" />
@@ -29,36 +31,36 @@
 <body class="leading-normal tracking-widest overflow-scroll">
 
     <!-- Starting Container -->
-    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0">
+    <nav class="bg-gray-600 opacity-75 items-center top-0 z-100 inset-x-0" x-data="{ open : false }">
         <div class="w-full m-w-screen-xl relative mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between px-4 h-16">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     <!-- Mobile menu button-->
-                    <button @click="isOpen = !isOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
+                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
                         aria-label="Main menu" x-bind:aria-expanded="open">
-          
-                  <!-- Icon when menu is closed -->
-                    <svg x-state:on="Menu open" x-state:off="Menu closed" :class="isOpen ? 'block' : 'hidden'" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path v-if="!isOpen" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
             
-                  <!-- Icon when menu is open -->
-                    <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path v-if="isOpen"  fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                  </button>
+                    <!-- Icon when menu is closed -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open}" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                      </svg>
+              
+                    <!-- Icon when menu is open -->
+                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
                 </div>
 
                 <!-- Website Logo -->
-                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-1 flex items-center -ml-8 justify-center sm:justify-start">
                     <div class="flex-shrink-0">
                         <!-- Replace this with out logo -->
-                        <!-- <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo" />
-                      <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo" /> -->
+                        <img class="block lg:hidden w-auto h-8 object-left justify-start float-left" src="assets/PLAYdark.png" alt="Playr logo" id="playPNG" />
+                        <img class="hidden lg:block w-auto h-8 " src="assets/PLAYdark2.png" alt="Playr logo" id="playrLogo" />
                     </div>
 
                     <!-- Menu Links -->
-                    <div class="hidden sm:flex sm:ml-6 lg:xl-12">
+                    <div class="hidden sm:flex sm:ml-6 lg:xl-12 menuLinks">
                         <div class="flex">
                             <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
                             <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About Us</a>
@@ -68,51 +70,49 @@
                 </div>
 
                 <!-- Notifications Icon -->
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
-            <!-- Heroicon name: bell -->
-                <svg class="h-6 w-6" x-description="Heroicon name: bell" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications"> -->
+                <!-- Heroicon name: bell -->
+                <!-- <svg class="h-6 w-6" x-description="Heroicon name: bell" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round"  stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
-              </button>
+              </button> -->
 
-                    <!-- Profile dropdown -->
-                    <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
-                        <div>
-                            <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
-                        <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
-                      </button>
-                        </div>
+                <!-- Profile dropdown -->
+                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                    <div>
+                        <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
+                              <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
+                            </button>
+                    </div>
 
-                        <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
-                            x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
-                            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                                <ul class="musicDropdown">
-                                    <li class="list-none" id="artist">
-                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
-                                    </li>
-                                    <li id="genre">
-                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
-                                    </li>
-                                    <li id="album">
-                                        <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                        x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
+                        <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                            <ul class="musicDropdown">
+                                <li class="list-none" id="artist">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Artist</a>
+                                </li>
+                                <li id="genre">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Genre</a>
+                                </li>
+                                <li id="album">
+                                    <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Album</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'block' : open, 'hidden': !open }" class="'hidden' sm:'hidden'">
-          <div :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-3 sm-flex">
-              <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
-              <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
-              <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
-          </div>
-      </div> -->
+        </div>
+        <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class=" {'block' : open, 'hidden': !open }" class="hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3 sm-flex">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
+                <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
+                <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
+            </div>
+        </div>
     </nav>
     <!-- Playr brand and statement and buttons to other pages -->
     <div class="bg-gray-50 brandStatement">
@@ -173,9 +173,17 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <p class="mx-auto w-auto pt-2">&#169; Copyright 2020 Fong, SanPedro & Torres</p>
+    </footer>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- tailwind js style -->
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2/highlight.pack.min.js,npm/axios@0.19.2/dist/axios.min.js,npm/dlv@1.1.3/dist/dlv.umd.min.js,gh/alpinejs/alpine@v2.2.1/dist/alpine.js,npm/fuse.js@5.0.9-beta/dist/fuse.min.js"></script>
+    <script src="/js/app.js?id=b4b05d28e9cc2aa52134"></script>
+    <script src="/js/prism.js?id=15deb4e2ec03d399dcb3"></script>
     <script>
         AOS.init();
     </script>
