@@ -26,7 +26,7 @@ I am a full time Collage student who has a very busy schedule. Most of the time 
 * [openweathermap](https://openweathermap.org/)
 
 ## Deployed_Link
-![Playr](https://jsp117.github.io/Playr/)
+[Playr](https://jsp117.github.io/Playr/)
 
 ## Features
 * Gif of my Website. 
