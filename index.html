@@ -37,16 +37,22 @@
                     <!-- Mobile menu button-->
                     <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
                         aria-label="Main menu" x-bind:aria-expanded="open">
-            
-                    <!-- Icon when menu is closed -->
-                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open}" class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                      </svg>
-              
-                    <!-- Icon when menu is open -->
-                      <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }" class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                      </svg>
+
+                        <!-- Icon when menu is closed -->
+                        <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': open, 'block': !open}"
+                            class="block h-6 w-6" x-description="Heroicon name: menu" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+
+                        <!-- Icon when menu is open -->
+                        <svg x-state:on="Menu open" x-state:off="Menu closed" :class="{'hidden': !open, 'block': open }"
+                            class="hidden h-6 w-6" x-description="Heroicon name: x" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
                 </div>
 
@@ -60,9 +66,12 @@
                     <!-- Menu Links -->
                     <div class="hidden sm:flex sm:ml-6 lg:xl-12 menuLinks">
                         <div class="flex">
-                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
-                            <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About Us</a>
-                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2 mr-10 pr-5">Link to Our Profiles</a>
+                            <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your
+                                Playlist</a>
+                            <a href="aboutUs.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2">About
+                                Us</a>
+                            <a href="profiles.html" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out sm:mt-0 sm:ml-2 mr-10 pr-5">Link
+                                to Our Profiles</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +91,7 @@
                 <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
                     <div>
                         <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
-                          <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
+                            <img class="h-8 w-8 rounded-full" src="assets/musicicon.png" alt="music icon">
                         </button>
                     </div>
 
@@ -109,9 +118,12 @@
         <!-- Collapse Menu -->
         <div x-description="Mobile menu, toggle classes" x-state:on="Menu open" x-state:off="Menu closed" :class=" {'block' : open, 'hidden': !open }" class="hidden sm:hidden">
             <div class="px-2 pt-2 pb-3 sm-flex">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your Playlist</a>
-                <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About Us</a>
-                <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link to Our Profiles</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your
+                    Playlist</a>
+                <a href="aboutUs.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About
+                    Us</a>
+                <a href="profiles.html" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Link
+                    to Our Profiles</a>
             </div>
         </div>
     </nav>
@@ -121,9 +133,10 @@
         <div class="row" style="height: 1000px" id="brandName"><img src="assets/PLAYRblk.png" alt="playr logo" style="height:60px; width:200px" class="items-center mx-auto" />
             <div class="row col-span-1 items-center mx-auto my-auto justify-center">
                 <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 mt-10" id="downButton">
-                  <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                  </svg>
+                    <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -141,7 +154,7 @@
                             <iframe class="static" id="youtubePly" width="45%" style="height:320px" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                             </iframe>
                             <iframe class="static ml-18" id="music" width="55%" style="height:fit-content" scrolling="no" frameborder="no" allow="autoplay" src="">
-                        </iframe>
+                            </iframe>
                         </div>
 
                         <!-- Save Button Playlist -->
@@ -150,24 +163,37 @@
                                 id="saveBtn">Save Playlist
                             </button>
 
+
                             <!-- Clear Button Playlist -->
                             <button type="submit" class="group relative flex content-right justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out right-20 bottom-0"
                                 id="clearBtn">Clear Playlist
                             </button>
                         </div>
+
+                        <!-- Color legend for playlist containers -->
+                        <div class="row legendColors">
+                            <p id="scColor">SoundCloud Playlist</p>
+                            <p id="ytColor">YouTube Playlist</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Song lyrics box -->
+            <div class="row">
+                <div class="grid grid-rows-3 grid-flow-col grid-col-2 gap-4 w-auto h-auto playlistBox">
+
+
+                    <div id="lyrics" class="row-span-2 col-span-1 lg:col-span-2 items-center songLyrics">
+                    </div>
+                </div>
+            </div>
+
+
             <!-- Playlist Container -->
             <div>
                 <div class="row">
-                    <div class="grid grid-rows grid-flow-col gap-4 w-auto h-auto playlistBox">
-
-
-                        <div id="lyrics" class="row-span-2 col-span-2 items-center songLyrics">
-                        </div>
-
+                    <div class="grid grid-rows-3 grid-flow-col grid-col-2 gap-4 w-auto h-auto playlistBox">
 
                         <div id="player" class="row-span-1 col-span-1 w-auto overscroll-auto overflow-auto h-64 scrollbar-thumb-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch lg:max-h-sm soundCloudPlaylist">
                         </div>
@@ -183,9 +209,10 @@
             <div class="row-span-2">
                 <div class="col-span-1 items-center mx-auto my-auto justify-center">
                     <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-md focus:border-indigo-800 hover:border-indigo-400 transition transform rotate-180 float-right duration-150 ease-in-out" id="UpButtonMainCard">
-                      <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                      </svg>
+                        <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -194,16 +221,17 @@
             <div class="row-span-2">
                 <div class="col-span-1 items-center mt-0 my-20 justify-center">
                     <button class=" hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-md focus:border-indigo-800 hover:border-indigo-400 transition float-right duration-150 ease-in-out" id="downButtonMainCard">
-                        <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        <svg class="animate-bounce w-6 h-6 text-indigo-500" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                         </svg>
-                      </button>
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Save Playlists Container -->
-        <div class="bg-white h-auto shadow overflow-hidden sm:rounded-lg float-center mt-20 justify-center items-center opacity-75" data-aos="fade-down" data-aos-duration="3000" id="savePlaylistBox">
+        <div id="saved" class="bg-white h-auto shadow overflow-hidden sm:rounded-lg float-center mt-20 justify-center items-center opacity-75" data-aos="fade-down" data-aos-duration="3000" id="savePlaylistBox">
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="text-lg leading-12 font-medium text-black-900">
                     SAVED PLAYLISTS
@@ -254,7 +282,9 @@
         <div class="grid-rows-2 grid-cols-1">
             <div class="row-span-2 col-span-1">
                 <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow transform rotate-180 float-right mb-48 pb-30" id="upButton">
-                    <svg class="animate-bounce w-6 h-6 text-gray-900 transform rotate-180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="animate-bounce w-6 h-6 text-gray-900 transform rotate-180" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                        stroke="currentColor">
                         <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
                 </button>

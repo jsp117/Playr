@@ -462,7 +462,8 @@ $('#downButton').click(function() {
 // save button
 $("#saveBtn").on("click", function() {
     if (go) {
-
+        $("#savedPlaylists").attr("style", "display: inline-block");
+        $("#saved").attr("style", "display: inline-block");
         // $("#savedPlaylists").empty();
         localStorage.setItem("c", count);
         localStorage.setItem(count + " gnr", $("#musicInput").val());
@@ -491,6 +492,12 @@ function local() {
     // localstorage
     var c = localStorage.getItem("c");
     c = parseInt(c);
+    if (c == 0) {
+        $("#saved").attr("style", "display: none");
+        $("#savedPlaylists").attr("style", "display: none");
+    }
+
+
     // console.log("c: ", c);
     for (var i = 0; i < c + 1; i++) {
         gnr = localStorage.getItem(i + " gnr");
