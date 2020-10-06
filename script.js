@@ -492,7 +492,8 @@ function local() {
     // localstorage
     var c = localStorage.getItem("c");
     c = parseInt(c);
-    if (c == 0) {
+    console.log("c: ", c);
+    if (isNaN(c)) {
         $("#saved").attr("style", "display: none");
         $("#savedPlaylists").attr("style", "display: none");
     }
@@ -583,6 +584,8 @@ $("#savedPlaylists").on("click", "button", function() {
 });
 
 $("#clearBtn").on("click", function() {
+    $("#savedPlaylists").attr("style", "display: none");
+    $("#saved").attr("style", "display: none");
     localStorage.clear();
     $("#savedPlaylists").empty();
     count = 0;
