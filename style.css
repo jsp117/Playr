@@ -1,272 +1,255 @@
- /* Overall styling for all pages  */
- 
- body {
-     background-image: url("./assets/newyorkbg.jpg");
-     background-size: cover;
-     background-position: center;
-     height: auto;
-     width: 100%;
-     margin-bottom: 25px;
-     font-family: 'Thasadith', sans-serif;
-     overflow: hidden;
- }
- /* Navbar Logos */
- 
- @media (max-width: 1060px) {
-     img#playrLogo {
-         display: none;
-     }
-     img#playPNG {
-         display: block;
-         flex-shrink: 0;
-     }
- }
- 
- @media (max-width: 639px) {
-     img#playPNG {
-         margin-left: 100px;
-     }
- }
- /* Footer */
- 
- .footer {
-     background-color: gray;
-     opacity: 80%;
-     padding: 5px 0;
-     padding-bottom: 100px;
-     position: absolute;
-     margin-bottom: -50px;
-     margin-top: 600px;
-     width: 100%;
-     color: white;
-     font-weight: bold;
-     text-align: center;
- }
- 
- @media (max-height:1200px) {
-     .footer {
-         position: initial;
-     }
- }
- 
- .otherPages {
-     margin-top: 100px;
- }
- /* Index Main Page Styling */
- 
- #brandName {
-     text-align: center;
-     font-size: 50px;
-     padding-top: 300px;
-     font-weight: bolder;
- }
- 
- @media (max-width: 1000px) {
-     div.menuLinks {
-         float: left;
-     }
-     input#musicInput {
-         flex-shrink: 0;
-         float: right;
-         margin-right: 0px;
-         width: auto;
-     }
- }
- 
- #downButton {
-     margin-bottom: 100px;
-     margin-left: 0 auto;
-     margin-right: 0 auto;
-     align-items: center;
- }
- 
- #musicInput {
-     margin-right: 0 auto;
-     margin-left: 0 auto;
-     width: 250px;
-     background-color: #e6e6ff;
- }
- 
- #saveBtn {
-     float: right;
-     margin-right: 10px;
-     margin-bottom: 0px;
- }
- 
- #clearBtn {
-     margin-right: 20px;
- }
- 
- .maincard {
-     margin-top: 130px;
-     opacity: 90%
- }
- 
- .playlistBox {
-     padding-bottom: 50px;
- }
- 
- .songLyrics {
-     background-color: #a6a6a6;
-     margin-left: 30px;
-     margin-right: 20px;
-     margin-top: 20px;
-     margin-bottom: 20px;
-     padding-right: 100px;
- }
- 
- .soundCloudPlaylist,
- .youTubePlaylist,
- .userSavePlaylists {
-     background-color: #b3b3b3;
-     margin-right: 30px;
-     margin-top: 20px;
-     margin-left: 30px;
- }
- 
- #upButtonMainCard {
-     float: right;
-     margin-right: 10px;
- }
- 
- #downButtonMainCard {
-     float: right;
-     margin-bottom: 0px;
- }
- 
- .albumCover {
-     opacity: 80%;
-     margin-top: 1000px;
-     margin-bottom: 500px;
- }
- 
- #ytGrid,
- #scGrid {
-     height: 700px;
-     width: 1200px;
- }
- 
- @media (max-width: 1279px) {
-     div.youTubeVId {
-         margin-right: 10px;
-     }
- }
- 
- #backToTop {
-     margin-bottom: 0px;
-     margin-right: 0px;
-     margin-top: 55px;
- }
- /* CSS Styling for aboutUs.html */
- 
- .brandStatement {
-     margin-top: 70px;
- }
- 
- .infoBox {
-     opacity: 90%;
-     padding-top: 20px;
- }
- 
- #aboutUsCon {
-     margin-top: 5px;
- }
- 
- .musicImageBlock {
-     background-color: #a6a6a6;
-     margin-left: 30px;
-     margin-right: 20px;
-     margin-top: 20px;
-     margin-bottom: 20px;
- }
- 
- #musicImg {
-     width: 610px;
-     height: 860px;
- }
- 
- @media (max-width:639px) {
-     img#musicImg {
-         display: none;
-     }
-     div.musicImageBlock {
-         display: none;
-     }
- }
- 
- @media (max-width:1023px) {
-     img#musicImg {
-         height: 1080px;
-     }
- }
- 
- @media (max-width:1279px) {
-     img#musicImg {
-         height: 1000px;
-     }
- }
- 
- #player {
-     cursor: pointer;
- }
- 
- #musicQuote {
-     text-align: center;
-     font-style: italic;
-     margin-top: 20px;
-     padding-top: 100px;
-     font-size: 18px;
-     background-color: #d9d9d9;
-     margin-right: 30px;
-     margin-left: 30px;
- }
- 
- #whatWeDo {
-     background-color: #b3b3b3;
-     margin-right: 30px;
-     margin-bottom: 20px;
-     margin-left: 30px;
- }
- 
- .caption {
-     text-align: center;
-     margin-top: 15px;
- }
- 
- #playIcon,
- #pauseIcon,
- #shuffleIcon,
- #forwardIcon {
-     height: 30px;
-     width: 30px;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 20px;
- }
- 
- .textDescription {
-     display: block;
-     margin-left: 80px;
-     margin-right: 80px;
-     padding-left: 50px;
-     padding-right: 50px;
-     text-align: center;
- }
- /* styling for Profiles Page */
- 
- .creatorsHeader {
-     margin-top: 70px;
- }
- 
- .icons {
-     display: inline;
-     list-style-type: none;
-     float: left;
- }
- /* add class for JavaScript */
- 
- .borderList {
-     margin-top: 5px;
-     border-bottom: 3px solid #e6e6e6;
-     display: block;
- }
+/* Overall styling for all pages  */
+
+body {
+    background-image: url("./assets/newyorkbg.jpg");
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    width: 100%;
+    margin-bottom: 25px;
+    font-family: 'Dosis', sans-serif;
+    overflow: hidden;
+}
+
+
+/* Navbar Logos */
+
+@media (max-width: 1060px) {
+    img#playrLogo {
+        display: none;
+    }
+    img#playPNG {
+        display: block;
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 639px) {
+    img#playPNG {
+        margin-left: 100px;
+    }
+}
+
+
+/* Index Main Page Styling */
+
+#brandName {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 300px;
+    font-weight: bolder;
+}
+
+@media (max-width: 1000px) {
+    div.menuLinks {
+        float: left;
+    }
+    input#musicInput {
+        flex-shrink: 0;
+        float: right;
+        margin-right: 0px;
+        width: auto;
+    }
+}
+
+#downButton {
+    margin-bottom: 100px;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    align-items: center;
+}
+
+#musicInput {
+    margin-right: 0 auto;
+    margin-left: 0 auto;
+    width: 250px;
+    background-color: #e6e6ff;
+}
+
+#saveBtn {
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+#clearBtn {
+    margin-right: 20px;
+}
+
+.maincard {
+    margin-top: 130px;
+    opacity: 88%
+}
+
+.songLyrics {
+    background-color: #a6a6a6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+
+.soundCloudPlaylist,
+.youTubePlaylist,
+.userSavePlaylists {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.soundCloudPlaylist {
+    background-color: #ffcc80;
+    margin-top: 20px;
+}
+
+.youTubePlaylist {
+    background-color: #ffad99;
+    margin-top: 20px;
+}
+
+#savePlaylistBox {
+    opacity: 92%;
+    margin-top: 150px;
+}
+
+.userSavePlaylists {
+    background-color: #cceeff;
+}
+
+#upButtonMainCard {
+    float: right;
+    margin-right: 10px;
+}
+
+#downButtonMainCard {
+    float: right;
+    margin-bottom: 0px;
+}
+
+.albumCover {
+    opacity: 88%;
+    margin-top: 1000px;
+    margin-bottom: 500px;
+}
+
+
+/* CSS Styling for aboutUs.html */
+
+.brandStatement {
+    margin-top: 70px;
+}
+
+.infoBox {
+    opacity: 90%;
+    padding-top: 20px;
+    padding-bottom: 200px;
+}
+
+#aboutUsCon {
+    margin-top: 5px;
+}
+
+.musicImageBlock {
+    background-color: #a6a6a6;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#musicImg {
+    width: 610px;
+    height: 860px;
+}
+
+@media (max-width:639px) {
+    img#musicImg {
+        display: none;
+    }
+    div.musicImageBlock {
+        display: none;
+    }
+}
+
+@media (max-width:1279px) {
+    img#musicImg {
+        height: 1100px;
+    }
+}
+
+#player {
+    cursor: pointer;
+}
+
+#musicQuote {
+    text-align: center;
+    font-style: italic;
+    margin-top: 20px;
+    padding-top: 100px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+#whatWeDo {
+    background-color: #b3b3b3;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.caption {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#playIcon,
+#pauseIcon,
+#shuffleIcon,
+#forwardIcon {
+    height: 30px;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.textDescription {
+    display: block;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+
+/* styling for Profiles Page */
+
+.creatorsHeader {
+    margin-top: 70px;
+}
+
+.portfolios {
+    font-style: italic;
+    font-weight: 800;
+}
+
+.icons {
+    list-style-type: none;
+    float: left;
+}
+
+
+/* add class for JavaScript */
+
+.borderList {
+    margin-top: 5px;
+    border-bottom: 3px solid #e6e6e6;
+    display: block;
+    padding: 5px;
+    padding-left: 10px;
+}

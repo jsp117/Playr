@@ -33,6 +33,7 @@
         <div class="w-full m-w-screen-xl relative mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between px-4 h-16">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+
                     <!-- Mobile menu button-->
                     <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-400 focus:outline-none focus:bg-gray-300 focus:text-white transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'"
                         aria-label="Main menu" x-bind:aria-expanded="open">
@@ -52,7 +53,6 @@
                 <!-- Website Logo -->
                 <div class="flex-1 flex items-center -ml-8 justify-center sm:justify-start">
                     <div class="flex-shrink-0">
-                        <!-- Replace this with out logo -->
                         <img class="block lg:hidden w-auto h-8 object-left justify-start float-left" src="assets/PLAYdark.png" alt="Playr logo" id="playPNG" />
                         <img class="hidden lg:block w-auto h-8 " src="assets/PLAYRdark.png" alt="Playr logo" id="playrLogo" />
                     </div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <!-- Profile dropdown -->
+                <!-- Dropdown for Music Selection for Future Development -->
                 <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
                     <div>
                         <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
@@ -75,7 +75,7 @@
                             </button>
                     </div>
 
-                    <div x-show="open" x-description="Profile dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
+                    <div x-show="open" x-description="music dropdown, show/hide" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration 75"
                         x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
                         <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                             <ul class="musicDropdown">
@@ -104,6 +104,7 @@
             </div>
         </div>
     </nav>
+
     <!-- Playr brand and statement and buttons to other pages -->
     <div class="bg-gray-50 brandStatement">
         <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
@@ -122,7 +123,6 @@
         </div>
     </div>
 
-
     <!-- Main Card -->
     <div class="container mx-auto infoBox">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6 opacity-65" id="aboutUsCon" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
@@ -133,14 +133,17 @@
             <!-- Content inside card -->
             <div>
                 <div class="grid grid-rows-3 grid-flow-col gap-4 mb-5 mt-5 w-auto h-auto">
+
                     <!-- Image -->
                     <div class="row-span-3 col-span-2 musicImageBlock w-full items-center w-auto h-auto sm:hidden md:block l: block xl:block" data-aos="flip-left" data-aos-duration="3000">
                         <img src="assets/about-us-assets/music.jpg" alt="music photo" id="musicImg">
                     </div>
+
                     <!-- Music quote -->
                     <div class="row-span-1 col-span-1 font-semibold p-8 w-auto" id="musicQuote" data-aos="flip-right" data-aos-duration="3000">
                         <h3>"Music speaks when we can't, changes the way we feel, zones out all the noise, taking us into another world so surreal."</h3>
                     </div>
+
                     <!-- What we do -->
                     <div class="row-span-2 col-span-1 w-auto" id="whatWeDo" data-aos="flip-down" data-aos-duration="3000">
                         <img src="assets/about-us-assets/play.png" alt="play icon" id="playIcon" />
@@ -161,9 +164,6 @@
             </div>
         </div>
     </div>
-
-    <footer class="footer otherPages">
-        <p class="mx-auto w-auto pt-2">&#169; Copyright 2020 Fong, SanPedro & Torres</p>
     </footer>
 
     <!-- jQuery -->

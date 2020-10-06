@@ -2,7 +2,7 @@
 
 
 ## Description 
-Welcome to our music playlist generator. Here is an easy way to access music, create playlist all at the click of a button avoiding all the clutter. Here you will be presented with a well and modern designed page. At the top you will find a search bar, the user types in the artist, song or genre of their liking and a search button. Once the user presses the search button the user will be directed to a music player containing all of the songs related to the artist, song, or genre. Here you will also find a history section that will contain all the playlist you have searched for in the past. The user will also have the ability to delete non desired playlist at the click of the delete button next to the playlist name.
+Welcome to our Music Playlist Generator. Here is an easy way to access music and create playlists all at the click of a button avoiding all the clutter of other music sites. You will be presented with a website with a modern design and easy to access features. At the top you will find a search bar in which the user types in the artist, song or genre of their liking. Once the user presses enter, Playr will create playlists based on the genre, artist or song title. The first playlist shown on the page is made up of SoundCloud songs that can be played on the page. The second playlist will consist of working Youtube links that will open a separate tab to play. If the user chooses, they may press the Save Playlist button to store both the Soundcloud and Youtube songs to a button titled with the term they searched for. These playlists will be stored to local storage and persist through reloads. The user will also have the ability to delete all saved playlists at the click of the Clear PLaylist button towards the top of the soundcloud song names. At the bottom of the page, the youtube links are displayed with their album covers. There are also buttons spread throughout the page allowing the user to scroll up and down to the next features.
 
 ## Table of Contents
 * [Installation](#installation)
@@ -20,10 +20,13 @@ I am a full time Collage student who has a very busy schedule. Most of the time 
 
 ## Technologies
 * [JavaScript](https://www.w3schools.com/js/)
-* [Tilwind](https://tailwindcss.com/)
+* [Tailwind](https://tailwindcss.com/)
 * [jQuery](https://jquery.com/)
-* [momentsjs](https://momentjs.com/)
-* [openweathermap](https://openweathermap.org/)
+* [Openwhyd](https://github.com/openwhyd/openwhyd/blob/master/docs/API.md)
+* [Musixmatch](https://developer.musixmatch.com/)
+* [Soundcloud](https://developers.soundcloud.com/docs/api/html5-widget)
+
+
 
 ## Deployed_Link
 [Playr](https://jsp117.github.io/Playr/)
@@ -43,20 +46,17 @@ I am a full time Collage student who has a very busy schedule. Most of the time 
 
 ## Author
 Jon SanPedro, Jerri Fong, Ivan Torres
-* [Deployed-Link]()
-* [GitHub-Repo]()
-* [linkedIn]()
+* [Jon SanPedro Github](https://github.com/jsp117)
+* [Jon SanPedro LinkedIn](https://www.linkedin.com/in/jonathan-s-6ab32283/)
+* [Jerri Fong Github]()
+* [Jerri Fong LinkedIn]()
+* [Ivan Torres Github]()
+* [Ivan Torres LinkedIn]()
 
 ## Credits
 * We want to give Credits to all of our TA and Tutors who helped us thought this project as well as our teamates who this project would have been done without them. 
 * [StackOverFlow](https://stackoverflow.com/)
 * [W3schools](https://www.w3schools.com/)
-* [Openwhyd](https://github.com/openwhyd/openwhyd/blob/master/docs/API.md)
-* [Musixmatch](https://developer.musixmatch.com/)
-* [Soundcloud](https://developers.soundcloud.com/docs/api/html5-widget)
-
-
-
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
