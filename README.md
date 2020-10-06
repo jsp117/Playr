@@ -6,11 +6,12 @@ Welcome to our Music Playlist Generator. Here is an easy way to access music and
 We utilized the Openwhyd, Musixmatch and SoundCloud Widget APIs to display all content on the page. Openwhyd provided us with the ability to pull song ids, song names, and artist names that we then separated into arrays of SoundCloud and YouTube songs. From there, we used string manipulation to pull the appropriate data to pass on to Musixmatch and the SoundCloud Widget. After checking if lyrics were available for the chosen song, the song ID would then be passed to Musixmatch to grab lyrics and post to the page. If there are no lyrics available, the lyrics div would be hidden from the page. After trimming the song ID over several functions, the final ID is then passed to the SoundCloud Widget to play. The SoundCloud Widget API is also used to error check for broken links. Whenever a 404 error is returned from SoundCloud, the playing song is skipped over. 
 
 ## Table of Contents
+* [Features](#features)
 * [User Story](#user_story)
 * [Usage](#usage)
 * [Technologies](#technologies)
 * [Deployed Link](#deployed_link)
-* [Features](#images)
+* [GIF](#gif-of-website)
 * [Author](#author)
 * [Credits](#credits)
 * [License](#license)
@@ -21,9 +22,9 @@ This project has a number of features that include the following:
 
 * Navbar
 
-    The Navbar contains the logo of our application, links to other pages in our website as well as a search bar for the user and a *dropdown menu that allows the user to choose between genre, artist or album. The application is mobile responsive so if the user is on a device with a smaller screen, and the user would like to explore other pages of the website, the user will have a collapsable menu on the top left corner of the navbar.
+    The Navbar contains the logo of our application, links to other pages in our website as well as a search bar for the user and a dropdown menu* that allows the user to choose between genre, artist or album. The application is mobile responsive so if the user is on a device with a smaller screen, and the user would like to explore other pages of the website, the user will have a collapsible menu on the top left corner of the navbar.
 
-    * Note: Currently the dropdown menu is still in the works.
+    * Note: The dropdown menu is still in production.
 
 * Main Page
 
@@ -43,19 +44,21 @@ I am a full time college student with a very busy schedule. I spend most of my t
 ## Usage
 The first page displayed for the user is the main page which is where they will find a search bar in which they can input a genre. Upon pressing the enter key, the page will scroll down into a playlist area where they will see a YouTube playlist and a SoundCloud playlist. The YouTube playlist will direct them to the YouTube link, and the SoundCloud playlist will play in the built in SoundCloud player. The user has the ability to save and clear playlists by pressing the corresponding buttons under the YouTube and SoundCloud players. By pressing the down arrow at the bottom of the music container, the browser will automatically scroll down to a YouTube artwork area where the user can click the artwork to be directed to a YouTube page with music. Last but not least the user has the option to scroll to the top of the page by clicking the up arrow at the bottom of the page if they desire to search for a different genre. 
 
-## Technologies
+## Technologies Used
 * [JavaScript](https://www.w3schools.com/js/)
 * [Tailwind](https://tailwindcss.com/)
+* [AOS](https://michalsnik.github.io/aos/)
 * [jQuery](https://jquery.com/)
 * [Openwhyd API](https://github.com/openwhyd/openwhyd/blob/master/docs/API.md)
 * [Musixmatch API](https://developer.musixmatch.com/)
-* [Soundcloud Widget API](https://developers.soundcloud.com/docs/api/html5-widget)
+* [SoundCloud Widget API](https://developers.soundcloud.com/docs/api/html5-widget)
+* [YouTube](https://www.youtube.com)
 
 ## Deployed_Link
 [Playr](https://jsp117.github.io/Playr/)
 
 ## Images
-
+![PLAYR-GIF](./assets/playr1.gif)
 * Openwhyd API call
 ![Openwhyd AJAX Call](./assets/openwhydajax.png)
 * Musixmatch API call
@@ -82,7 +85,7 @@ Jon SanPedro, Jerri Fong, and Ivan Torres
 
 
 ## Credits
-* We want to give Credits to all of our TA's and Tutors who helped us thought this project as well as our teamates who this project would have been done without them. 
+* We want to give Credit to all of our TA's and Tutors who helped us through this project!
 * [StackOverFlow](https://stackoverflow.com/)
 * [W3schools](https://www.w3schools.com/)
 
