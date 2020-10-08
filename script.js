@@ -38,11 +38,11 @@ function music(x) {
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/https://openwhyd.org/hot/" + x + "?format=json&limit=1000",
         method: "GET",
-        error: function(e) {
+        error: function (e) {
             alert("connection issues");
         }
 
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
         for (var i = 0; i < response.tracks.length; i++) {
             sl1.push(response.tracks[i].eId);
@@ -106,7 +106,7 @@ function music(x) {
 
 
         // added to music from soundcloud
-        newArray = sc.map(function(i) {
+        newArray = sc.map(function (i) {
             return i[0].split("https").pop();
         });
         // console.log("split https: " + newArray);
@@ -120,7 +120,7 @@ function music(x) {
             }
         }
 
-        bandNames = scNames.map(function(n) {
+        bandNames = scNames.map(function (n) {
             if (n[0].includes(" - ")) {
                 return n[0].split(" - ")[0];
             } else if (n[0].includes(" -")) {
@@ -136,7 +136,7 @@ function music(x) {
         });
         // console.log("first split band : " + bandNames);
         // grabs song names  - maps each piece of array and runs for each item
-        sNames = scNames.map(function(n) {
+        sNames = scNames.map(function (n) {
             return n[0].split(" - ").pop();
         });
         console.log("snames: ", sNames);
@@ -187,11 +187,11 @@ function lyricsFinder(x, y) {
         method: "GET",
         dataType: "json",
 
-        error: function(e) {
+        error: function (e) {
             alert("connection issues");
 
         }
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
 
         if (response.message.header.available === 0) {
@@ -218,11 +218,11 @@ function lyrics(x) {
         method: "GET",
         dataType: "json",
 
-        error: function(e) {
+        error: function (e) {
             alert("connection issues");
             $("#lyrics").attr("style", "display: none");
         }
-    }).then(function(response) {
+    }).then(function (response) {
         // console.log("Musixmatch response: ");
         // console.log(response.message.body.lyrics.lyrics_body);
         // lyricHolder.length = 0;
@@ -299,10 +299,10 @@ function scAdd(x) {
     // console.log("song playing: " + finalArray[x]);
     var widget = SC.Widget(iframe);
     // play next song on finish
-    widget.bind(SC.Widget.Events.FINISH, function() {
+    widget.bind(SC.Widget.Events.FINISH, function () {
         iframe.src = "https://w.soundcloud.com/player/?url=https" + finalArray[x++] + "&auto_play=true)";
     });
-    widget.bind(SC.Widget.Events.ERROR, function(eventData) {
+    widget.bind(SC.Widget.Events.ERROR, function (eventData) {
         if (x < 15) {
             // console.log(eventData);
             // $("#lyrics").empty();
@@ -318,7 +318,7 @@ function scAdd(x) {
 }
 
 // plays song on click
-$("#player").on("click", "p", function() {
+$("#player").on("click", "p", function () {
     lyricHolder.length = 0;
     $("#lyrics").attr("style", "display: none");
     $("#lyrics").empty();
@@ -362,33 +362,34 @@ function lyricsCheck(x) {
 
 }
 
-$("#musicInput").on("keydown", function(event) {
+$("#musicInput").on("keydown", function (event) {
     go = false;
-    // reset all arrays
-    youTubeImages.length = 0;
-    $(".youtuveVId").empty();
-    $("body").attr("style", "overflow: visible;");
-    $("#lyrics").attr("style", "display: none");
-    $("#lyrics").empty();
-    $("#player").empty();
-    $("#youtube").empty();
-    lyricHolder.length = 0;
-    alter.length = 0;
-    bandNames.length = 0;
-    sc1.length = 0;
-    sc1Names.length = 0;
-    sl1.length = 0;
-    sn1.length = 0;
-    youtubeLinks.length = 0;
-    scNames.length = 0;
-    sc.length = 0;
-    newArray.length = 0;
-    finalArray.length = 0;
-    remove4.length = 0;
-    songLinks.length = 0;
-    songNames.length = 0;
-    youTubeImages.length = 0;
+
     if (event.keyCode == 13) {
+        // reset all arrays
+        youTubeImages.length = 0;
+        $(".youtuveVId").empty();
+        $("body").attr("style", "overflow: visible;");
+        $("#lyrics").attr("style", "display: none");
+        $("#lyrics").empty();
+        $("#player").empty();
+        $("#youtube").empty();
+        lyricHolder.length = 0;
+        alter.length = 0;
+        bandNames.length = 0;
+        sc1.length = 0;
+        sc1Names.length = 0;
+        sl1.length = 0;
+        sn1.length = 0;
+        youtubeLinks.length = 0;
+        scNames.length = 0;
+        sc.length = 0;
+        newArray.length = 0;
+        finalArray.length = 0;
+        remove4.length = 0;
+        songLinks.length = 0;
+        songNames.length = 0;
+        youTubeImages.length = 0;
         $("#saveBtn").attr("style", "display: inline-block");
         go = true;
         var genre = $("#musicInput").val();
@@ -442,9 +443,9 @@ function youtubePlay(y) {
     }
 }
 
-$("#upButton").on("click", function() {
-    $(function() {
-        $("#upButton").on('click', function() {
+$("#upButton").on("click", function () {
+    $(function () {
+        $("#upButton").on('click', function () {
             $("HTML, BODY").animate({
                 scrollTop: 0
             }, 1000);
@@ -452,7 +453,7 @@ $("#upButton").on("click", function() {
     });
 });
 
-$('#downButton').click(function() {
+$('#downButton').click(function () {
     $('html, body').animate({
         scrollTop: $(".maincard").offset().top - 425
     }, 'slow');
@@ -460,7 +461,7 @@ $('#downButton').click(function() {
 });
 
 // save button
-$("#saveBtn").on("click", function() {
+$("#saveBtn").on("click", function () {
     if (go) {
         $("#savedPlaylists").attr("style", "display: inline-block");
         $("#saved").attr("style", "display: inline-block");
@@ -527,7 +528,7 @@ function local() {
     // console.log("count: " + count);
 }
 
-$("#savedPlaylists").on("click", "button", function() {
+$("#savedPlaylists").on("click", "button", function () {
     lyricHolder.length = 0;
     youTubeImages.length = 0;
     $(".youtuveVId").empty();
@@ -583,7 +584,7 @@ $("#savedPlaylists").on("click", "button", function() {
     scAdd(0);
 });
 
-$("#clearBtn").on("click", function() {
+$("#clearBtn").on("click", function () {
     $("#savedPlaylists").attr("style", "display: none");
     $("#saved").attr("style", "display: none");
     localStorage.clear();
@@ -606,15 +607,15 @@ function pageOpen() {
 pageOpen();
 local();
 
-$("#downButtonMainCard").on("click", function() {
+$("#downButtonMainCard").on("click", function () {
     $([document.documentElement, document.body]).animate({
         scrollTop: $(".albumCover").offset().top
     }, 2000);
 });
 
-$("#UpButtonMainCard").on("click", function() {
-    $(function() {
-        $("#UpButtonMainCard").on('click', function() {
+$("#UpButtonMainCard").on("click", function () {
+    $(function () {
+        $("#UpButtonMainCard").on('click', function () {
             $("HTML, BODY").animate({
                 scrollTop: 0
             }, 1000);
