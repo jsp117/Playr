@@ -454,6 +454,7 @@ $("#upButton").on("click", function () {
 });
 
 $('#downButton').click(function () {
+    $("body").attr("style", "overflow: visible;");
     $('html, body').animate({
         scrollTop: $(".maincard").offset().top - 425
     }, 'slow');
